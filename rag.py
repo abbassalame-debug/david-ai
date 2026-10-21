@@ -433,7 +433,8 @@ def _ensure_fts(table):
 # That calibration is bge-m3's. Distance distributions differ per embedder, so the
 # live value now comes from embedding.BACKENDS (re-calibrated for Qwen3-Embedding on
 # 2026-10-03 -- see the handoff note for the measured clusters).
-MAX_RELEVANT_DISTANCE = embedding.max_distance()
+_RETRIEVAL = _POLICY.get("retrieval", {})      # config/vaults.toml [retrieval] (both thresholds are per-corpus settings)
+MAX_RELEVANT_DISTANCE = float(_RETRIEVAL.get("max_distance", embedding.max_distance()))
 
 # Same calibration exercise for BM25: a genuine keyword match on this deployment
 # (a query sharing real content with an indexed document) scored _score≈34;
@@ -442,7 +443,28 @@ MAX_RELEVANT_DISTANCE = embedding.max_distance()
 # scored _score≈10-12 every time. BM25 doesn't have vector search's "always
 # returns something" problem, but a query built entirely from generic tokens
 # (a bare arithmetic question) still pulls in coincidental low-score noise.
-MIN_FTS_SCORE = 15
+# BM25 scores grow with the corpus, so the floor is a setting: config/vaults.toml [retrieval] min_fts_score (default 15).
+MIN_FTS_SCORE = float(_RETRIEVAL.get("min_fts_score", 15))
+
+
+def _text_key(text):
+    """The comparable form of a chunk's text: header lines dropped, whitespace and case normalised."""
+    body = "\n".join(l for l in str(text or "").splitlines() if not l.startswith(("File:", "Path:")))
+    return " ".join(body.split()).lower()
+
+
+def _distinct(rows):
+    """Keeps the first (best-ranked) row of each text. A library often holds the same document in several folders; without
+    this, copies of one passage can fill every context slot. Rows without text are kept as they are."""
+    seen, out = set(), []
+    for r in rows:
+        key = _text_key(r.get("text"))
+        if key:
+            if key in seen:
+                continue
+            seen.add(key)
+        out.append(r)
+    return out
 
 
 def permitted_vaults(agent):
@@ -518,7 +540,7 @@ def retrieve(agent, query, top_k=5):
     if not fts_hits:
         # Vector-only this call. This used to return here, which skipped the configured cross-vault fallback below
         # in exactly the "thin results" case it exists for (audit finding M-03; fixed with P0-B on 2026-10-18).
-        primary = vec_hits[:top_k]
+        primary = _distinct(vec_hits)[:top_k]
     else:
         # ── Reciprocal Rank Fusion (RRF k=60) ─────────────────────────────────
         # Each result scores 1/(60+rank). Appearing in both lists doubles the score.
@@ -535,7 +557,7 @@ def retrieve(agent, query, top_k=5):
             by_id.setdefault(rid, r)
 
         ranked = sorted(by_id.values(), key=lambda r: scores[r["id"]], reverse=True)
-        primary = ranked[:top_k]
+        primary = _distinct(ranked)[:top_k]     # a repeated passage gives its slot to the next distinct one
 
     # ── Cross-vault fallback ───────────────────────────────────────────────────
     # If primary results are thin, silently expand into related vaults.
@@ -560,10 +582,14 @@ def retrieve(agent, query, top_k=5):
                     if r.get("_distance", 0) <= MAX_RELEVANT_DISTANCE
                 ]
                 seen = {r["id"] for r in primary}
+                seen_text = {_text_key(r.get("text")) for r in primary} - {""}
                 for r in fb_hits:
-                    if r["id"] not in seen and len(primary) < top_k:
+                    key = _text_key(r.get("text"))
+                    if r["id"] not in seen and (not key or key not in seen_text) and len(primary) < top_k:
                         primary.append(r)
                         seen.add(r["id"])
+                        if key:
+                            seen_text.add(key)
             except Exception:
                 pass
 

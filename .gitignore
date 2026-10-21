@@ -42,6 +42,7 @@ jobs_drafts/
 jobs_state/
 _reset_archive/
 /evals/
+/reports/
 examples/templates/*.ai
 examples/templates/*.psd
 
@@ -77,3 +78,6 @@ memory/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# private-terms list for scripts/private_terms_check.py: kept only in the owner's private repository, never here
+config/private_terms.txt

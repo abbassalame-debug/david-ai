@@ -539,6 +539,18 @@ def _create_task(title: str, description: str, agent: str) -> str:
 
 # ── War rooms & agents ────────────────────────────────────────────────────────
 
+def _hud_auth_headers() -> dict:
+    """The war-room and delegation tools call the HUD over HTTP (2026-10-21, workstream 3). Inside the HUD process that is the
+    in-memory internal token (scoped to those two routes); elsewhere (the CLI) a caller token from DAVID_HUD_TOKEN, if set."""
+    if os.environ.get("DAVID_HUD_TOKEN"):
+        return {"Authorization": f"Bearer {os.environ['DAVID_HUD_TOKEN']}"}
+    try:
+        import hud_auth
+        return hud_auth.internal_headers()
+    except Exception:
+        return {}
+
+
 async def _run_war_room(room: str, message: str) -> str:
     # The room name is model-written. /api/warroom accepts only its known rooms; this refuses anything that is not a plain room
     # name before it is sent at all (2026-10-20, audit P1-3).
@@ -552,7 +564,7 @@ async def _run_war_room(room: str, message: str) -> str:
         req = urllib.request.Request(
             "http://127.0.0.1:8000/api/warroom",
             data=payload,
-            headers={"Content-Type": "application/json"},
+            headers={"Content-Type": "application/json", **_hud_auth_headers()},
             method="POST"
         )
         loop = asyncio.get_running_loop()
@@ -583,7 +595,7 @@ async def _delegate_to_agent(agent: str, prompt: str) -> str:
         req = urllib.request.Request(
             "http://127.0.0.1:8000/api/chat_sync",
             data=payload,
-            headers={"Content-Type": "application/json"},
+            headers={"Content-Type": "application/json", **_hud_auth_headers()},
             method="POST"
         )
         loop = asyncio.get_running_loop()

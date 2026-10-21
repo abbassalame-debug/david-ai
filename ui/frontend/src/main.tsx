@@ -5,6 +5,9 @@ import './index.css'
 import App from './App.tsx'
 import { ThemeProvider } from './components/theme/theme-provider'
 import { TooltipProvider } from './components/ui/tooltip'
+import { installAuthRedirect } from './lib/auth'
+
+installAuthRedirect()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

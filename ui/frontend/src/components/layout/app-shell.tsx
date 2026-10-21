@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react"
 import { Link, Outlet, useLocation } from "react-router-dom"
+import { LogOutIcon } from "lucide-react"
 
 import {
   Sidebar,
@@ -14,6 +16,23 @@ import { Separator } from "@/components/ui/separator"
 import { ModeToggle } from "@/components/theme/mode-toggle"
 import { CommandPalette } from "@/components/layout/command-palette"
 import { NAV_SECTIONS } from "@/lib/nav-sections"
+import { Button } from "@/components/ui/button"
+import { getAuthStatus, signOut } from "@/lib/auth"
+
+// Shown only while the HUD login is on and this browser is signed in (workstream 3).
+function SignOutButton() {
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    getAuthStatus().then((s) => setShow(!!s && s.login === "on" && s.signed_in))
+  }, [])
+  if (!show) return null
+  return (
+    <Button variant="ghost" size="sm" onClick={() => void signOut()} aria-label="Sign out">
+      <LogOutIcon />
+      <span>Sign out</span>
+    </Button>
+  )
+}
 
 function useCurrentSectionTitle() {
   const location = useLocation()
@@ -65,6 +84,7 @@ export function AppShell() {
           <Separator orientation="vertical" className="h-5" />
           <h1 className="text-sm font-medium">{title}</h1>
           <div className="ml-auto flex items-center gap-2">
+            <SignOutButton />
             <ModeToggle />
           </div>
         </header>

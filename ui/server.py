@@ -17,6 +17,10 @@ from starlette.websockets import WebSocketState
 import urllib.request
 
 app = FastAPI(title="David UI")
+# HUD login (2026-10-21, workstream 3): one ASGI middleware for every HTTP route, mount and WebSocket (hud_auth.py).
+# Added FIRST so it runs INSIDE the Host and Origin guards below: a foreign Host is still a 400, not a 401.
+import hud_auth
+app.add_middleware(hud_auth.AuthMiddleware)
 # DNS-rebinding guard: a malicious page can re-resolve its own hostname to
 # 127.0.0.1, but the browser still sends that hostname in the Host header.
 # Rejecting any Host that isn't our own localhost names blocks rebinding on
@@ -495,6 +499,9 @@ def write_audit_log(entry: dict) -> None:
     # the surface so CLI and HUD lines are distinguishable in the shared file.
     entry.setdefault("surface", "hud")
     _router_audit(entry)
+
+
+hud_auth.AUDIT = write_audit_log     # auth_ok / auth_failed / auth_locked / ... go to the same (redacted) audit log
 
 
 def pick_model(mode, domain="general", agent=None):
@@ -1356,6 +1363,7 @@ def _sweep_stuck_tasks():
 
 @app.on_event("startup")
 async def startup():
+    hud_auth.startup_check()      # no password and no DAVID_AUTH=off: refuse to start (workstream 3)
     await asyncio.get_running_loop().run_in_executor(None, _sweep_stuck_tasks)
     await asyncio.get_running_loop().run_in_executor(None, _transcripts.prune_daily)   # chat-log retention (P1-7)
     asyncio.create_task(_vault_watcher())
@@ -2431,6 +2439,48 @@ app.include_router(design_api.router)
 
 
 # ─── SPA fallback (must stay last) ────────────────────────────────────────────
+
+# ─── HUD login (workstream 3): the only routes open without a session ───────────────────────────────────────────────────
+
+@app.get("/healthz")
+async def healthz():
+    """Open: lets the launcher and scripts see that the server answers, without revealing anything."""
+    return {"ok": True}
+
+
+@app.get("/api/auth/status")
+async def auth_status(request: Request):
+    m = hud_auth.mode()
+    signed_in = m == "off" or (request.scope.get("state") or {}).get("auth") == "session" or hud_auth.session_valid(
+        request.cookies.get(hud_auth.COOKIE))
+    return {"login": m, "signed_in": bool(signed_in)}
+
+
+@app.post("/api/auth/login")
+async def auth_login(request: Request):
+    try:
+        body = await request.json()
+    except Exception:
+        body = {}
+    status, sid = await asyncio.get_running_loop().run_in_executor(None, hud_auth.login, (body or {}).get("password", ""))
+    if status == "ok":
+        resp = JSONResponse({"ok": True})
+        resp.headers["set-cookie"] = hud_auth.cookie_header(sid)
+        resp.headers["cache-control"] = "no-store"
+        return resp
+    code = {"locked": 429, "unconfigured": 503}.get(status, 401)
+    msg = {"locked": "Too many wrong passwords: the login is locked for 15 minutes.",
+           "unconfigured": "No HUD password is set."}.get(status, "Wrong password.")
+    return JSONResponse({"ok": False, "error": msg}, status_code=code)
+
+
+@app.post("/api/auth/logout")
+async def auth_logout(request: Request):
+    hud_auth.logout(request.cookies.get(hud_auth.COOKIE))
+    resp = JSONResponse({"ok": True})
+    resp.headers["set-cookie"] = hud_auth.clear_cookie_header()
+    return resp
+
 
 @app.get("/favicon.svg")
 async def frontend_favicon():

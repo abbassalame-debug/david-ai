@@ -35,6 +35,9 @@ run_dir = tempfile.mkdtemp(prefix="run_", dir=RUNS_ROOT)
 child_env = {k: v for k, v in os.environ.items() if k not in SCRUB}
 child_env["DAVID_DATA"] = os.path.join(run_dir, "data")
 child_env["DAVID_VAULTS"] = os.path.join(run_dir, "vaults")
+# The suites run the HUD app in-process with no password in their scratch data folder, so they run with the login off
+# (2026-10-21, HUD login). test_hud_auth.py removes this and tests the login on.
+child_env["DAVID_AUTH"] = "off"
 os.makedirs(child_env["DAVID_DATA"])
 os.makedirs(child_env["DAVID_VAULTS"])
 # Every suite gets a temp folder inside the run folder, as a fully resolved long path (2026-10-21, found by CI): on the hosted

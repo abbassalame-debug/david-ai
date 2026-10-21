@@ -1,0 +1,77 @@
+name: clean install
+
+# Follows the README Quickstart on a fresh runner (2026-10-22, workstream 5B): only requirements.txt, no pip cache, no Ollama.
+# The embedder is faked (DAVID_EMBEDDER=hash-demo: words hashed into vectors, no model), so this proves the install, the ingest,
+# a retrieval and the server start, not answer quality.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quickstart:
+    name: Quickstart (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash
+    env:
+      DAVID_EMBEDDER: hash-demo
+      DAVID_VAULTS: examples/demo_vault
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install (a fresh virtual environment, requirements.txt only)
+        run: |
+          python -m venv .venv
+          if [ -f .venv/Scripts/python.exe ]; then PY=.venv/Scripts/python.exe; else PY=.venv/bin/python; fi
+          echo "PY=$PY" >> "$GITHUB_ENV"
+          echo "DAVID_DATA=$RUNNER_TEMP/david-demo" >> "$GITHUB_ENV"
+          "$PY" -m pip install --upgrade pip
+          "$PY" -m pip install -r requirements.txt
+
+      - name: Ingest the demo vault
+        run: |
+          "$PY" turbo_ingest.py --vaults-only
+
+      - name: One retrieval
+        run: |
+          "$PY" - <<'EOF'
+          import rag
+          hits = rag.retrieve("analyst", "Which supplier delivers beef trimmings?", top_k=2)
+          files = [h["file"] for h in hits]
+          print(files)
+          assert files and files[0] == "Supplier Notes.md", files
+          EOF
+
+      - name: The server refuses to start without a password or DAVID_AUTH=off
+        run: |
+          if timeout 60 "$PY" -m uvicorn --app-dir ui server:app --host 127.0.0.1 --port 8001 > refuse.log 2>&1; then
+            echo "the server started unprotected"; cat refuse.log; exit 1
+          fi
+          grep -i -E "password|DAVID_AUTH" refuse.log
+
+      - name: Start the server and get 200 from /healthz
+        run: |
+          DAVID_AUTH=off "$PY" -m uvicorn --app-dir ui server:app --host 127.0.0.1 --port 8000 > server.log 2>&1 &
+          for i in $(seq 1 60); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8000/healthz || true)
+            [ "$code" = "200" ] && break
+            sleep 2
+          done
+          cat server.log
+          [ "$code" = "200" ] || { echo "/healthz answered $code"; exit 1; }
+          curl -s http://127.0.0.1:8000/healthz

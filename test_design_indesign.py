@@ -223,7 +223,12 @@ finally:
     C.subprocess.Popen = real_popen
     C.server_path = real_sp
 check("if Windows points the InDesign connection at a beta program, the bridge refuses with a sentence and does not start anything", msg and "stable program" in msg and "Beta" in msg and not ran, msg)
-check("on this computer the stable InDesign connection points at the stable program", C.server_path("indesign").lower() == C.APPS["indesign"]["exe"].lower() and C.check_target("indesign") is None)
+import ci_env
+_need = ci_env.needs("adobe:indesign")       # this check reads the real Windows registration of the installed InDesign
+if _need:
+    ci_env.skip("on this computer the stable InDesign connection points at the stable program", _need)
+else:
+    check("on this computer the stable InDesign connection points at the stable program", C.server_path("indesign").lower() == C.APPS["indesign"]["exe"].lower() and C.check_target("indesign") is None)
 kw = dict(src="a.indd", out="b.indd", png="c.png", page=1, text=AR, tbox=[0, 0, 10, 10], fams=["X"], size=12, img=None, ibox=None, fit="fit")
 jx = D.build_jsx("place", "r.json", rtl=False, ltr=True, **kw)
 jr = D.build_jsx("place", "r.json", rtl=True, ltr=False, **kw)

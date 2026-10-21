@@ -154,6 +154,33 @@ with mock.patch.dict(te.VAULT_ROOTS, {"system": vault}), mock.patch.object(te, "
     check("the firewalled Research vault is still read-only", "read-only" in r, r)
 shutil.rmtree(tmp, ignore_errors=True)
 
+# A vault root spelled differently from its resolved path (an 8.3 short name on Windows) must not push the backup out of
+# note_backups/ (found by CI on 2026-10-21: relpath climbed out with "..\..").
+def _short(p):
+    if os.name != "nt":
+        return p
+    import ctypes
+    buf = ctypes.create_unicode_buffer(1024)
+    return buf.value if ctypes.windll.kernel32.GetShortPathNameW(p, buf, 1024) else p
+tmp2 = tempfile.mkdtemp(prefix="tier1_shortpath_root_")
+try:
+    vault_long = os.path.join(tmp2, "VaultWithALongFolderName")
+    os.makedirs(os.path.join(vault_long, "Ideas"))
+    vault_short = _short(vault_long)
+    backups2 = os.path.join(tmp2, "note_backups")
+    if vault_short == vault_long:
+        print("  SKIP (needs 8.3 short names on this volume)  a short-form vault root keeps backups inside note_backups/")
+    else:
+        with mock.patch.dict(te.VAULT_ROOTS, {"system": vault_short}), mock.patch.object(te, "NOTE_BACKUP_DIR", backups2):
+            te._write_note("System", "Ideas/plan.md", "v1")
+            te._write_note("System", "Ideas/plan.md", "v2", overwrite=True)
+        baks = [os.path.join(dp, f) for dp, _, fs in os.walk(tmp2) for f in fs if f.endswith(".bak")]
+        check("a vault root given as an 8.3 short path still puts the backup inside note_backups/<vault>/<folders>",
+              len(baks) == 1 and os.path.realpath(os.path.dirname(baks[0])).lower() == os.path.realpath(os.path.join(backups2, "VaultWithALongFolderName", "Ideas")).lower(),
+              str(baks))
+finally:
+    shutil.rmtree(tmp2, ignore_errors=True)
+
 # ── P1-5: DLP ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 print("\n── P1-5: DLP catches common secret shapes and leaves benign text alone ──")
 # Built from parts so this file never holds a complete key-shaped string.

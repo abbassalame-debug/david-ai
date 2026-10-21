@@ -28,6 +28,10 @@ TMP = tempfile.mkdtemp(prefix="dpr_test_")
 ROOT = os.path.join(TMP, "design")
 SRC = os.path.join(TMP, "originals")
 os.makedirs(SRC)
+# A stand-in for Premiere's H.264 export preset, so the suite does not depend on an installed Premiere (found by CI on a
+# clean runner, 2026-10-21). The refusal when the preset is missing is checked below.
+P.PRESET = os.path.join(TMP, "H264 Match Source - High bitrate.epr")
+open(P.PRESET, "w", encoding="utf-8").write("<PremiereData/>")
 CLIPS = []
 for n in ("intro.mp4", "plate.png", "outro.mov"):
     p = os.path.join(SRC, n)
@@ -67,6 +71,10 @@ check("the panel script has no syntax error (checked with node)", sc.returncode 
 print("\n-- planning --")
 base = {"clips": CLIPS, "name": "Hero Cut"}
 pl = lambda **prm: refused(R.plan_job, PID, "premiere.rough_cut", {**base, **prm}, root=ROOT)
+_preset = P.PRESET
+P.PRESET = os.path.join(TMP, "no_such_preset.epr")
+check("without Premiere's H.264 export preset the plan is refused with a sentence", "export preset was not found" in (pl() or ""), pl())
+P.PRESET = _preset
 txt = os.path.join(SRC, "x.txt")
 open(txt, "w").write("x")
 jpg_title = os.path.join(SRC, "t.jpg")

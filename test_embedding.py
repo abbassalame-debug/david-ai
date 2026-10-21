@@ -160,7 +160,7 @@ check("its ingest cache is separate from the legacy one",
 b = load_with_env("bge-m3")
 check("DAVID_EMBEDDER=bge-m3 rolls back to the legacy table",
       b.table_name() == "notes" and b.model_name() == "BAAI/bge-m3")
-check("...and the legacy cache file", b.cache_db().endswith(r"\ingest_cache.db"))
+check("...and the legacy cache file", os.path.basename(b.cache_db()) == "ingest_cache.db")
 
 try:
     load_with_env("nonsense")

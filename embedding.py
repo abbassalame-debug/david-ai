@@ -59,7 +59,7 @@ def table_name():
 def cache_db():
     """Path of turbo_ingest's 'already indexed' cache for the active table."""
     t = _cfg["table"]
-    return str(DAVID_DATA / "ingest_cache.db") if t == "notes" else rf"{DAVID_DATA}\ingest_cache_{t}.db"
+    return str(DAVID_DATA / ("ingest_cache.db" if t == "notes" else f"ingest_cache_{t}.db"))   # portable (was a hard-coded backslash)
 
 
 def max_distance():

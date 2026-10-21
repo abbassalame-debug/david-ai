@@ -80,7 +80,13 @@ print("\n-- connections --")
 check("InDesign is pinned to the stable build's own CLSID, never to a ProgID (the ProgIDs belong to the beta installs)", H.COM_IDS["indesign"] == ["{45112D7C-822C-400A-BA8C-D682F7FD0B8E}"] and all(not re.search(r"InDesign\.Application", x) for x in H.COM_IDS["indesign"]))
 ab = open(str(DAVID_HOME / "adobe_bridge.py"), encoding="utf-8").read()
 check("adobe_bridge uses the same pin for InDesign and no longer lists a ProgID that opens a beta", "45112D7C-822C-400A-BA8C-D682F7FD0B8E" in ab and '"InDesign.Application.2026"' not in ab and '"InDesign.Application"]' not in ab)
-check("every program path in the handshake is the stable 2026 install and exists on this computer", all(os.path.isfile(p) for p in H.EXES.values()) and "Beta" not in "".join(H.EXES.values()))
+check("every program path in the handshake is the stable install, never a Beta", "Beta" not in "".join(H.EXES.values()))
+import ci_env
+_need = next((n for n in (ci_env.needs(f"adobe:{a}") for a in ("photoshop", "illustrator", "indesign", "aftereffects", "premiere")) if n), None)
+if _need:
+    ci_env.skip("every program path in the handshake exists on this computer", _need)
+else:
+    check("every program path in the handshake exists on this computer", all(os.path.isfile(p) for p in H.EXES.values()))
 check("the connected program is checked: a connection that opens a different program than the stable one stops the run", "opened a different program" in open(str(DAVID_HOME / "design_handshake.py"), encoding="utf-8").read())
 
 print("\n-- what is reported --")

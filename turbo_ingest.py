@@ -309,7 +309,7 @@ def run(batch_size: int = 32, vaults_only: bool = False, only_path: str = None,
     # otherwise abort this run instantly.
     _clear_stop_sentinel()
 
-    if embedding.BACKENDS[embedding.ACTIVE]["kind"] == "ollama":
+    if embedding.BACKENDS[embedding.ACTIVE]["kind"] in ("ollama", "hash"):
         # The embedder IS an Ollama model, so Ollama has to stay up (the old path
         # killed it to free VRAM for CUDA bge-m3). A 0.6B embedder is ~1 GB and
         # coexists with the resident chat models, so nothing needs evicting.
@@ -595,6 +595,6 @@ if __name__ == "__main__":
         # cancellation mid-run must never leave the model server dead. Only start
         # a server if none is answering: with the Ollama embedder it never went down,
         # and a second `ollama serve` just fights the first one for the port.
-        if not _ollama_alive():
+        if embedding.BACKENDS[embedding.ACTIVE]["kind"] != "hash" and not _ollama_alive():
             start_ollama()
         _clear_stop_sentinel()

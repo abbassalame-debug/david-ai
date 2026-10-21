@@ -42,6 +42,13 @@ BACKENDS = {
         "table": "notes", "query_instruct": False,
         "max_distance": 0.45,
     },
+    # No model at all: words hashed into a fixed vector (2026-10-22, workstream 5B). For the clean-install CI job and for trying
+    # the pipeline without Ollama. It matches shared words, not meaning; never use it for a real index.
+    "hash-demo": {
+        "kind": "hash", "model": "hash-demo",
+        "table": "notes_hash_demo", "query_instruct": False,
+        "max_distance": 0.95,
+    },
 }
 
 ACTIVE = os.environ.get("DAVID_EMBEDDER", "qwen3-embedding-0.6b")
@@ -150,11 +157,31 @@ def doc_text(file, text):
     return f"Document: {file}\n{text}"
 
 
+class _HashEmbedder:
+    """Deterministic bag-of-words vectors: each word (lower-cased, Unicode letters and digits) adds +-1 at a hashed position."""
+
+    def encode(self, texts, normalize_embeddings=True, is_query=False, batch_size=32, **_ignored):
+        import hashlib
+        import re
+        single = isinstance(texts, str)
+        items = [texts] if single else list(texts)
+        arr = np.zeros((len(items), EMBED_DIM), dtype=np.float32)
+        for i, t in enumerate(items):
+            for w in re.findall(r"\w+", str(t or "").lower()):
+                h = int.from_bytes(hashlib.blake2b(w.encode("utf-8"), digest_size=8).digest(), "little")
+                arr[i, h % EMBED_DIM] += 1.0 if (h >> 63) & 1 else -1.0
+        if normalize_embeddings:
+            arr = arr / np.maximum(np.linalg.norm(arr, axis=1, keepdims=True), 1e-12)
+        return arr[0] if single else arr
+
+
 def get_embedder():
     global _embedder
     if _embedder is None:
         if _cfg["kind"] == "ollama":
             _embedder = _OllamaEmbedder(_cfg["model"], _cfg["query_instruct"])
+        elif _cfg["kind"] == "hash":
+            _embedder = _HashEmbedder()
         else:
             _embedder = _STEmbedder(_cfg["model"])
     return _embedder

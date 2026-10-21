@@ -3,6 +3,7 @@
 [![tests](https://github.com/abbassalame-debug/david-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/abbassalame-debug/david-ai/actions/workflows/tests.yml)
 [![frontend](https://github.com/abbassalame-debug/david-ai/actions/workflows/frontend.yml/badge.svg)](https://github.com/abbassalame-debug/david-ai/actions/workflows/frontend.yml)
 [![secrets](https://github.com/abbassalame-debug/david-ai/actions/workflows/secrets.yml/badge.svg)](https://github.com/abbassalame-debug/david-ai/actions/workflows/secrets.yml)
+[![clean install](https://github.com/abbassalame-debug/david-ai/actions/workflows/clean-install.yml/badge.svg)](https://github.com/abbassalame-debug/david-ai/actions/workflows/clean-install.yml)
 
 **A local-first multi-agent orchestration, retrieval (RAG) and cross-application automation framework.**
 Apache-2.0 · Python 3.11 · Ollama · LanceDB · FastAPI · React
@@ -57,6 +58,10 @@ python scripts/set_hud_password.py
 # the API starts even without a frontend build; `cd ui/frontend && npm install && npm run build` adds the pages
 python -m uvicorn --app-dir ui server:app --host 127.0.0.1 --port 8000
 ```
+
+No Ollama yet? `DAVID_EMBEDDER=hash-demo` swaps the embedder for a model-free word hash (its own table), enough to try the ingest,
+retrieval and the HUD; it matches shared words, not meaning. The `clean install` CI job runs exactly this Quickstart that way on a
+fresh Ubuntu and Windows runner.
 
 Then open `http://127.0.0.1:8000/login`. Without a password and without `DAVID_AUTH=off` the server refuses to start rather than run
 unprotected. Programs that call the HUD (scripts, scheduled jobs) use scoped bearer tokens: `python scripts/hud_tokens.py create <name> "GET /api/..."`.

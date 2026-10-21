@@ -391,8 +391,11 @@ def _backup_note(root: str, full: Path) -> Path:
     """Copies a note about to be overwritten into NOTE_BACKUP_DIR/<vault folder>/<same subfolders>/<name>.<timestamp>.bak."""
     import shutil
     from datetime import datetime
-    rel = Path(os.path.relpath(full, root))
-    folder = Path(NOTE_BACKUP_DIR) / os.path.basename(root) / rel.parent
+    # Both sides resolved (2026-10-21): `full` comes resolved from _safe_join, and a root spelled differently (an 8.3 short
+    # name, a junction) made relpath climb out with "..\.." and the backup land outside NOTE_BACKUP_DIR.
+    base = Path(root).resolve()
+    rel = Path(full).resolve().relative_to(base)
+    folder = Path(NOTE_BACKUP_DIR) / base.name / rel.parent
     folder.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
     backup = folder / f"{rel.name}.{stamp}.bak"

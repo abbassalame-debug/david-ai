@@ -744,7 +744,7 @@ async def _ensure_comfy_running(progress=None, budget: int = None) -> bool:
         subprocess.Popen(
             [sys.executable, str(COMFYUI_DIR / "main.py"), "--listen", "--lowvram"],
             cwd=str(COMFYUI_DIR),
-            creationflags=subprocess.CREATE_NO_WINDOW,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
         )
         _comfy_started_at = time.monotonic()
     budget = budget if budget is not None else COMFY_STARTUP_BUDGET_S
@@ -1238,7 +1238,7 @@ async def api_turbo_start():
     _turbo_proc = subprocess.Popen(
         [sys.executable, str(DAVID_HOME / "turbo_ingest.py")],
         cwd=str(DAVID_HOME),
-        creationflags=subprocess.CREATE_NO_WINDOW,
+        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
     )
     _spawned_pids.add(_turbo_proc.pid)
     return {"ok": True, "pid": _turbo_proc.pid}
@@ -1321,7 +1321,7 @@ async def _vault_watcher():
                     subprocess.Popen(
                         [sys.executable, str(DAVID_HOME / "rag.py"), "import", folder, domain],
                         cwd=str(DAVID_HOME),
-                        creationflags=subprocess.CREATE_NO_WINDOW,
+                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                     )
                     await asyncio.sleep(3)

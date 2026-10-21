@@ -44,12 +44,21 @@ check("the mirror image (letters join but the order runs left to right) is flagg
 disjoint = synth([(60 + i * 90, 120, 100 + i * 90, 240) for i in range(9)], "disjoint.png")
 dj = H.analyze_arabic(disjoint)
 check("nine separate letters are read as 'disjoint': an engine without Arabic shaping", dj["joining"] == "disjoint" and dj["arabic_ok"] is False and dj["body_parts"] == 9 and "apart" in dj["reading"], str(dj))
-im = Image.new("L", (1400, 400), 255)
-ImageDraw.Draw(im).text((60, 120), H.ARABIC, font=ImageFont.truetype(r"C:\Windows\Fonts\majalla.ttf", 140), fill=0)
-p = os.path.join(TMP, "pillow_unshaped.png")
-im.save(p)
-pu = H.analyze_arabic(p)
-check("a real font drawn WITHOUT shaping (Pillow's basic layout, the behaviour of a Roman text engine) is read as disjoint and not correct", pu["joining"] == "disjoint" and pu["arabic_ok"] is False, str(pu))
+# Any installed font with Arabic glyphs will do (the hosted CI runner has no Sakkal Majalla; found 2026-10-21).
+_fonts_dir = os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts")
+_arabic_font = next((os.path.join(_fonts_dir, f) for f in ("majalla.ttf", "arial.ttf", "tahoma.ttf", "segoeui.ttf")
+                     if os.path.isfile(os.path.join(_fonts_dir, f))), None)
+_label = "a real font drawn WITHOUT shaping (Pillow's basic layout, the behaviour of a Roman text engine) is read as disjoint and not correct"
+if _arabic_font is None:
+    import ci_env
+    ci_env.skip(_label, "an installed font with Arabic glyphs")
+else:
+    im = Image.new("L", (1400, 400), 255)
+    ImageDraw.Draw(im).text((60, 120), H.ARABIC, font=ImageFont.truetype(_arabic_font, 140), fill=0)
+    p = os.path.join(TMP, "pillow_unshaped.png")
+    im.save(p)
+    pu = H.analyze_arabic(p)
+    check(_label, pu["joining"] == "disjoint" and pu["arabic_ok"] is False, str(pu))
 blank = os.path.join(TMP, "blank.png")
 Image.new("L", (400, 200), 255).save(blank)
 check("a blank picture is reported as blank, not as a result", H.analyze_arabic(blank) == {"ok": False, "reason": "the picture is blank"})

@@ -37,6 +37,11 @@ child_env["DAVID_DATA"] = os.path.join(run_dir, "data")
 child_env["DAVID_VAULTS"] = os.path.join(run_dir, "vaults")
 os.makedirs(child_env["DAVID_DATA"])
 os.makedirs(child_env["DAVID_VAULTS"])
+# Every suite gets a temp folder inside the run folder, as a fully resolved long path (2026-10-21, found by CI): on the hosted
+# Windows runner %TEMP% is an 8.3 short path (a "RUNNER~1"-style folder name), so tempfile paths and their resolved forms differed
+# and every "is this file inside that folder" comparison failed.
+child_env["TEMP"] = child_env["TMP"] = child_env["TMPDIR"] = os.path.realpath(os.path.join(run_dir, "tmp"))
+os.makedirs(child_env["TEMP"])
 live_before = _fingerprint(LIVE_LOG)
 
 # CI (2026-10-21): with DAVID_CI=1 a check that needs Ollama, a GPU, COM or an Adobe app prints "SKIP (needs X)" (ci_env.py).

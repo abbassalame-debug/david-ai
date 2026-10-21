@@ -216,7 +216,7 @@ def stop_ollama():
 def start_ollama():
     try:
         subprocess.Popen(["ollama", "serve"],
-                         creationflags=subprocess.CREATE_NO_WINDOW)
+                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         time.sleep(3)
         print("  Ollama restarted.", flush=True)
     except Exception as e:

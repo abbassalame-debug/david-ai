@@ -95,7 +95,7 @@ def start_process(name: str) -> str:
         proc = subprocess.Popen(
             [sys.executable, script],
             cwd=str(DAVID_DIR),
-            creationflags=subprocess.CREATE_NO_WINDOW,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
             stdout=log_fh,
             stderr=subprocess.STDOUT,
         )

@@ -199,13 +199,14 @@ check("a first chunk (already carries the File: header) is left as is",
 check("an empty file name never produces a dangling prefix", embedding.doc_text("", "text") == "text")
 check("doc_text does not touch the query side (queries are formatted by the embedder only)",
       "doc_text" not in inspect.getsource(embedding._OllamaEmbedder.encode))
-_src = {n: open(rf"{DAVID_HOME}\{n}", encoding="utf-8").read() for n in ("rag.py", "file_watcher.py", "turbo_ingest.py", r"scripts\reembed_table.py")}
+_src = {n: open(os.path.join(str(DAVID_HOME), *n.split("/")), encoding="utf-8").read()       # portable paths (Linux CI)
+        for n in ("rag.py", "file_watcher.py", "turbo_ingest.py", "scripts/reembed_table.py")}
 check("rag.ingest_file embeds chunks via doc_text", "embedding.doc_text(rel_path, chunk)" in _src["rag.py"])
 check("rag.import_folder embeds chunks via doc_text", "embedding.doc_text(rel, chunk)" in _src["rag.py"])
 check("file_watcher embeds chunks via doc_text", "embedding.doc_text(os.path.basename(fpath), chunk)" in _src["file_watcher.py"])
 check("turbo_ingest embeds chunks via doc_text", "pending_text.append(embedding.doc_text(rel, chunk))" in _src["turbo_ingest.py"])
 check("reembed_table.py re-embeds via doc_text (a migration must not undo the context)",
-      "embedding.doc_text(r[\"file\"], r[\"text\"])" in _src[r"scripts\reembed_table.py"])
+      "embedding.doc_text(r[\"file\"], r[\"text\"])" in _src["scripts/reembed_table.py"])
 check("queries still go through is_query=True, not doc_text",
       "doc_text" not in inspect.getsource(rag.retrieve) and "doc_text" not in inspect.getsource(memory.recall))
 

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "draft_package v0",
+  "description": "DRAFT v0. The one file that moves between David (reads and prepares) and the Demo Bistro app / the manager (approves and writes). Version 0 is David's side of the contract; it is finalised with the app's own session before any pipeline code depends on it.",
+  "type": "object",
+  "required": ["schema", "draft_id", "business_day", "rate_lbp_per_usd", "day_status", "sources", "extraction", "cash", "computed", "flags"],
+  "properties": {
+    "schema": {"const": "draft_package/v0"},
+    "draft_id": {"type": "string", "description": "DRAFT-<business_day>-<nnn>. Carried on every row written from this draft, so a draft can be undone as a whole."},
+    "branch": {"type": "string", "default": "Downtown"},
+    "business_day": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+    "day_status": {"enum": ["open", "ended"], "description": "A draft may only target an open day."},
+    "correction_reason": {"type": ["string", "null"], "description": "Required when day_status is ended (the app's correction mode asks for a reason)."},
+    "rate_lbp_per_usd": {"type": "number", "description": "The rate in use for this day (set by head office)."},
+    "branch_settings": {"type": "object", "properties": {"rate_lbp_per_usd": {"type": "number"}, "cook_yield": {"type": "number"}}},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["file", "kind"], "properties": {"file": {"type": "string"}, "kind": {"type": "string"}, "sha256": {"type": "string"}}}},
+    "extraction": {
+      "type": "object",
+      "description": "What the reading step saw. Every number carries a confidence and whether two independent readings agreed. Unreadable values are null, never guessed.",
+      "properties": {
+        "summary_by_items": {
+          "type": "object",
+          "properties": {
+            "printed_total": {"type": ["number", "null"]},
+            "amounts_printed": {"type": "boolean", "description": "false when the POS roll prints a quantity per item and no price (the real Summary By Items), so a line has no amount and the lines cannot be totalled. Absent means true."},
+            "lines": {"type": "array", "items": {"type": "object", "required": ["line", "name_ar", "qty", "amount", "readings_agree"],
+              "properties": {
+                "line": {"type": "integer"}, "name_ar": {"type": "string", "description": "Exactly as printed, never corrected."},
+                "qty": {"type": ["number", "null"]}, "qty_alt": {"type": ["number", "null"]},
+                "amount": {"type": ["number", "null"]}, "readings_agree": {"type": "boolean"},
+                "match": {"type": "object", "properties": {"item_id": {"type": ["string", "null"]}, "name_ar": {"type": "string"}, "score": {"type": "number"}, "candidates": {"type": "array"}}}}}}
+          }
+        },
+        "main_reading": {"type": "object"}
+      }
+    },
+    "cash": {
+      "type": "object",
+      "required": ["old_cash", "pos_sales", "wallet", "expenses", "transfer_to_admin", "counted_usd", "counted_lbp"],
+      "properties": {
+        "old_cash": {"type": ["number", "null"]}, "pos_sales": {"type": ["number", "null"]}, "wallet": {"type": ["number", "null"]},
+        "expenses": {"type": "array", "items": {"type": "object", "required": ["label", "amount"], "properties": {"label": {"type": "string"}, "amount": {"type": "number"}}}},
+        "transfer_to_admin": {"type": ["number", "null"]}, "counted_usd": {"type": ["number", "null"]}, "counted_lbp": {"type": ["number", "null"]},
+        "actual_cash_count": {"type": ["number", "null"], "description": "Optional. ONE grand total of all cash counted (registers + safe), USD: the app's 'New'. When given it is the count; counted_usd / counted_lbp are then the register notes only."}
+      }
+    },
+    "computed": {"type": "object", "description": "Produced by code (reconcile_cash and friends), never by a model.", "properties": {"expected": {"type": "number"}, "counted": {"type": "number"}, "diff": {"type": "number"}, "sum_of_lines": {"type": "number"}, "printed_total": {"type": "number"}, "line_gap": {"type": "number"}, "meat_variance": {"type": "object"}}},
+    "flags": {"type": "array", "items": {"type": "string"}},
+    "tolerances": {"type": ["object", "null"], "description": "From reference/tolerances.md, set by the manager. Null means none configured."},
+    "recent_days": {"type": "array"}
+  }
+}

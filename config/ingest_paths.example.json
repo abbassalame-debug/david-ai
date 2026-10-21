@@ -1,0 +1,4 @@
+[
+  {"vault": "business", "path": "examples/academy_docs"},
+  {"vault": "music",    "path": "examples/sample_libraries", "mode": "docs_only"}
+]

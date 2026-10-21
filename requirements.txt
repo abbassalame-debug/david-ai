@@ -1,0 +1,25 @@
+# David AI core (Apache-2.0 / MIT / BSD dependencies only). Python 3.11+.
+#   pip install -r requirements.txt
+# Optional features live in their own files (requirements-*.txt); nothing below needs a GPU or a cloud account.
+# Ollama (https://ollama.com) is the local model server; install it separately.
+
+# ── server and API ───────────────────────────────────────────────────────────
+fastapi==0.136.3
+uvicorn==0.49.0
+websockets==16.0
+httpx==0.28.1
+python-dotenv==1.2.2
+psutil==7.2.2
+portalocker==3.2.0
+
+# ── retrieval and memory ─────────────────────────────────────────────────────
+lancedb==0.33.0
+pyarrow==24.0.0
+numpy==1.26.4
+watchdog==6.0.0
+
+# ── documents ────────────────────────────────────────────────────────────────
+openpyxl==3.1.5
+pypdf==6.13.2
+python-docx==1.2.0
+python-pptx==1.0.2

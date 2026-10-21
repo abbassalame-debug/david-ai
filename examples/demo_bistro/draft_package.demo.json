@@ -1,0 +1,574 @@
+{
+ "schema": "draft_package/v0",
+ "draft_id": "DRAFT-2026-09-22-001",
+ "branch": "Downtown",
+ "business_day": "2026-09-22",
+ "day_status": "ended",
+ "rate_lbp_per_usd": 90000,
+ "branch_settings": {
+  "rate_lbp_per_usd": 90000,
+  "cook_yield": 0.55
+ },
+ "sources": [
+  {
+   "file": "form.jpeg",
+   "kind": "daily_cash_form",
+   "sha256": "0870362d1a4b44d3a0f1133acf77752b26cbbeabb4cc9c7ab56a333d04908b5e"
+  },
+  {
+   "file": "helper.jpeg",
+   "kind": "daily_helper_sheet",
+   "sha256": "ae4a1a7c002d71271133fa039fbd1c91f131d910d20839349037bb046acbefa0"
+  },
+  {
+   "file": "main.jpeg",
+   "kind": "pos_main_reading",
+   "sha256": "97a34af5a5766a8ca31bab20d995d11107d2bbb218427ab4e3e2c4d5cf1b972d"
+  },
+  {
+   "file": "summary.jpeg",
+   "kind": "pos_summary_by_items",
+   "sha256": "c3e4849b84f0a4d3f1e004ac50f6e5e43f2ac0df94c717bf670fc9fef87c1186"
+  },
+  {
+   "file": "Branch Beef  ^0 Chicken Daily consumption 22-09-2026.xlsx",
+   "kind": "consumption_xlsx",
+   "sha256": "2a2b49643cff7c9b180c29846100e6c12a9c831bf4a3c121485694e31c902a98"
+  }
+ ],
+ "extraction": {
+  "summary_by_items": {
+   "printed_total": null,
+   "amounts_printed": false,
+   "lines": [
+    {
+     "line": 1,
+     "name_ar": "ساندويش دجاج صغير",
+     "qty": 29.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C01",
+      "name_ar": "ساندويش دجاج صغير",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C01",
+        "name_ar": "ساندويش دجاج صغير",
+        "score": 100
+       },
+       {
+        "item_id": "C02",
+        "name_ar": "ساندويش دجاج كبير",
+        "score": 79
+       },
+       {
+        "item_id": "C05",
+        "name_ar": "صحن ساندويش دجاج",
+        "score": 79
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 2,
+     "name_ar": "ساندويش دجاج كبير",
+     "qty": 16.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C02",
+      "name_ar": "ساندويش دجاج كبير",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C02",
+        "name_ar": "ساندويش دجاج كبير",
+        "score": 100
+       },
+       {
+        "item_id": "C01",
+        "name_ar": "ساندويش دجاج صغير",
+        "score": 79
+       },
+       {
+        "item_id": "C09",
+        "name_ar": "كيلو ساندويش دجاج",
+        "score": 79
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 3,
+     "name_ar": "بيبسي",
+     "qty": 34.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C39",
+      "name_ar": "بيبسي",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C39",
+        "name_ar": "بيبسي",
+        "score": 100
+       },
+       {
+        "item_id": "X01",
+        "name_ar": "بيبسي دايت",
+        "score": 67
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 4,
+     "name_ar": "نص كيلو ساندويش دجاج",
+     "qty": 2.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C08",
+      "name_ar": "نص كيلو ساندويش دجاج",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C08",
+        "name_ar": "نص كيلو ساندويش دجاج",
+        "score": 100
+       },
+       {
+        "item_id": "C09",
+        "name_ar": "كيلو ساندويش دجاج",
+        "score": 79
+       },
+       {
+        "item_id": "C16",
+        "name_ar": "نص كيلو ساندويش لحمة",
+        "score": 79
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 5,
+     "name_ar": "ساندويش لحمة كبير",
+     "qty": 12.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C11",
+      "name_ar": "ساندويش لحمة كبير",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C11",
+        "name_ar": "ساندويش لحمة كبير",
+        "score": 100
+       },
+       {
+        "item_id": "C10",
+        "name_ar": "ساندويش لحمة صغير",
+        "score": 79
+       },
+       {
+        "item_id": "C17",
+        "name_ar": "كيلو ساندويش لحمة",
+        "score": 79
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 6,
+     "name_ar": "سلايدر دجاج",
+     "qty": 3.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "K07",
+      "name_ar": "سلايدر دجاج",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "K07",
+        "name_ar": "سلايدر دجاج",
+        "score": 100
+       },
+       {
+        "item_id": "C26",
+        "name_ar": "سلايدر دجاج",
+        "score": 79
+       },
+       {
+        "item_id": "K22",
+        "name_ar": "سلايدر سجق",
+        "score": 73
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 7,
+     "name_ar": "ستيك دجاج",
+     "qty": 8.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "C19",
+      "name_ar": "ساندويش دجاج ستيك كلاسيكي",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "C19",
+        "name_ar": "ساندويش دجاج ستيك كلاسيكي",
+        "score": 100
+       },
+       {
+        "item_id": "C20",
+        "name_ar": "كومبو ستيك دجاج",
+        "score": 79
+       },
+       {
+        "item_id": "C22",
+        "name_ar": "ستيك سجق",
+        "score": 67
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar"
+    },
+    {
+     "line": 8,
+     "name_ar": "وجبة موظف بطاطا",
+     "qty": 9.0,
+     "amount": null,
+     "readings_agree": true,
+     "match": {
+      "item_id": "X02",
+      "name_ar": "وجبة موظف بطاطا",
+      "score": 100,
+      "candidates": [
+       {
+        "item_id": "X02",
+        "name_ar": "وجبة موظف بطاطا",
+        "score": 100
+       },
+       {
+        "item_id": "K04",
+        "name_ar": "وجبة دجاج موظف",
+        "score": 73
+       }
+      ]
+     },
+     "match_status": "matched",
+     "match_from": "name_ar",
+     "name_ar_alt": "وجبة سوطلف بطاطا",
+     "name_settled_by_menu": true
+    }
+   ],
+   "voids": [
+    {
+     "name": "بيبسي",
+     "amount": -1.98,
+     "qty": 1,
+     "readings_agree": true
+    }
+   ]
+  },
+  "main_reading": {
+   "printed_at": "23-09-2026 02:01:01",
+   "first_order": "22-09-2026 12:10:49",
+   "last_order": "23-09-2026 02:01:17",
+   "first_invoice": 203942,
+   "last_invoice": 204096,
+   "number_of_customers": 153,
+   "number_of_invoices": 157,
+   "grand_total": 3816.8,
+   "vat": 378.26,
+   "service": 0.0,
+   "discount": 0.0,
+   "net_total": 3816.8,
+   "net_sales": 3816.8,
+   "net_sales_without_taxes": 3438.56,
+   "payments_total": 3816.8,
+   "payments": [
+    {
+     "method": "Cash Usd",
+     "amount": 3816.8
+    }
+   ]
+  },
+  "daily_helper": {
+   "date": "21 Sept 2026",
+   "sales": 3816.8,
+   "transactions": 153,
+   "total": 3978.44,
+   "value_usd": 1796,
+   "value_ll": 4.32,
+   "over_short": 1961.96,
+   "old": 2361.98,
+   "expected": 2200.34,
+   "new": 2200.32,
+   "diff": -0.02,
+   "rows": [
+    {
+     "subject": "Transfer",
+     "amount": 3553.32,
+     "readings_agree": true
+    },
+    {
+     "subject": "veg.",
+     "amount": 222.66,
+     "readings_agree": true
+    },
+    {
+     "subject": "wish",
+     "amount": 166.8,
+     "readings_agree": true
+    },
+    {
+     "subject": "water",
+     "amount": 16.66,
+     "readings_agree": true
+    },
+    {
+     "subject": "staff",
+     "amount": 19.0,
+     "readings_agree": true
+    }
+   ]
+  },
+  "daily_cash_form": {
+   "branch": "Downtown",
+   "date": "22/09/2026",
+   "prepared_by": "Demo, U",
+   "total_transactions": 79,
+   "opening_cash_balance": 2361.98,
+   "total_pos_sales": 2059.6,
+   "total_actual_cash": 1814,
+   "total_expenses": null,
+   "total_to_be_handed": 3553.32,
+   "expenses": [
+    {
+     "description": "Veg",
+     "amount_usd": 222.66,
+     "amount_lbp": null,
+     "readings_agree": true
+    },
+    {
+     "description": "water",
+     "amount_usd": null,
+     "amount_lbp": 1499400,
+     "readings_agree": true
+    },
+    {
+     "description": "wallet",
+     "amount_usd": 65.0,
+     "amount_lbp": null,
+     "readings_agree": true
+    }
+   ],
+   "cash_on_hold": [
+    {
+     "description": "Veg",
+     "amount": 400,
+     "readings_agree": true
+    }
+   ]
+  }
+ },
+ "cash": {
+  "old_cash": 2361.98,
+  "pos_sales": 3816.8,
+  "wallet": 166.8,
+  "expenses": [
+   {
+    "label": "veg.",
+    "amount": 222.66
+   },
+   {
+    "label": "water",
+    "amount": 16.66
+   },
+   {
+    "label": "staff",
+    "amount": 19.0
+   }
+  ],
+  "transfer_to_admin": 3553.32,
+  "counted_usd": 1796.0,
+  "counted_lbp": null,
+  "actual_cash_count": 2200.32,
+  "source": "the Daily Helper screenshot"
+ },
+ "computed": {
+  "expected": 2200.34,
+  "counted": 2200.32,
+  "diff": -0.02,
+  "meat_variance": {
+   "chicken": {
+    "status": "loss",
+    "variance_kg": 1.816,
+    "variance_pct": 4.5
+   },
+   "beef": {
+    "status": "surplus",
+    "variance_kg": -0.475,
+    "variance_pct": -7.9
+   }
+  },
+  "meat_from_lines": {
+   "matched": {
+    "chicken": 7.11,
+    "beef": 1.56,
+    "sojok": 0.0
+   },
+   "with_suggested": {
+    "chicken": 7.11,
+    "beef": 1.56,
+    "sojok": 0.0
+   },
+   "lines_not_counted": [],
+   "lines_counted": 8,
+   "lines_counted_with_suggestions": 8,
+   "lines_spelling_only": [],
+   "lines_total": 8
+  }
+ },
+ "cfo_results": {
+  "cash": {
+   "tool": "reconcile_cash",
+   "ok": true,
+   "formula": "Expected = carried cash + POS sales - Wallet - expenses - transfer to admin. Counted = the full cash count (registers + safe) if entered, else the register count (USD notes + L.L / rate). Variance = Counted - Expected (positive = over, negative = short).",
+   "expected_usd": 2200.34,
+   "counted_basis": "actual_cash_count",
+   "register_count_usd": 1796.0,
+   "lbp_counted_in_usd": 0.0,
+   "flags": [],
+   "inputs": {
+    "carried_cash": 2361.98,
+    "pos_sales": 3816.8,
+    "wallet": 166.8,
+    "expenses": 258.32,
+    "transfer_to_admin": 3553.32,
+    "rate_lbp_per_usd": 90000.0,
+    "counted_usd_notes": 1796.0,
+    "counted_lbp": null
+   },
+   "status": "short",
+   "counted_usd": 2200.32,
+   "variance_usd": -0.02,
+   "within_tolerance": null,
+   "summary": "Expected 2,200.34 | Counted 2,200.32 | Difference −0.02 (short)"
+  },
+  "meat": {
+   "chicken": {
+    "tool": "check_meat_variance",
+    "ok": true,
+    "meat": "chicken",
+    "formula": "Raw used = starting + added - ending. Cooked yield = raw used x cook yield (0.55). Variance = POS sold + waste - cooked yield (positive = loss, the app's convention: more was sold and wasted than the raw weight used could yield).",
+    "status": "loss",
+    "meaning": "Sold and wasted (41.900 kg) exceed what the raw weight used could yield (40.084 kg) by 1.816 kg. The app calls this a loss. It is arithmetic, not a cause.",
+    "raw_used_kg": 72.88,
+    "cooked_yield_kg": 40.084,
+    "pos_sold_kg": 37.0,
+    "waste_kg": 4.9,
+    "variance_kg": 1.816,
+    "variance_pct": 4.5,
+    "inputs": {
+     "starting_kg": 172.226,
+     "added_kg": 68.0,
+     "ending_kg": 167.346
+    },
+    "components": {},
+    "tallow_kg": {},
+    "remaining_cooked_kg": -1.816,
+    "realized_yield_pct": 57.5,
+    "cook_yield": 0.55,
+    "within_tolerance": null,
+    "flags": [],
+    "summary": "Raw used 72.880 kg | Cooked yield 40.084 kg | Sold 37.000 + waste 4.900 | Variance +1.816 kg (+4.5%) (loss)"
+   },
+   "beef": {
+    "tool": "check_meat_variance",
+    "ok": true,
+    "meat": "beef",
+    "formula": "Raw used = starting + added - ending. Cooked yield = raw used x cook yield (0.55). Variance = POS sold + waste - cooked yield (positive = loss, the app's convention: more was sold and wasted than the raw weight used could yield).",
+    "status": "surplus",
+    "meaning": "The raw weight used would yield 5.995 kg cooked, 0.475 kg more than was sold and wasted (5.520 kg): that much cooked meat is unaccounted for. It is arithmetic, not a cause.",
+    "raw_used_kg": 10.9,
+    "cooked_yield_kg": 5.995,
+    "pos_sold_kg": 4.91,
+    "waste_kg": 0.61,
+    "variance_kg": -0.475,
+    "variance_pct": -7.9,
+    "inputs": {
+     "starting_kg": 16.64,
+     "added_kg": 10.0,
+     "ending_kg": 15.74
+    },
+    "components": {},
+    "tallow_kg": {},
+    "remaining_cooked_kg": 0.475,
+    "realized_yield_pct": 50.6,
+    "cook_yield": 0.55,
+    "within_tolerance": null,
+    "flags": [
+     {
+      "code": "BEEF_TALLOW_UNVERIFIED",
+      "severity": "CHECK",
+      "message": "beef weights must include the fat/tallow (لية); these totals were given without their parts, so that cannot be verified"
+     }
+    ],
+    "summary": "Raw used 10.900 kg | Cooked yield 5.995 kg | Sold 4.910 + waste 0.610 | Variance −0.475 kg (−7.9%) (surplus)"
+   }
+  }
+ },
+ "flags": [
+  "NOTE: the receipt lists 1 void line(s); they are shown in the package and are not subtracted from the quantities",
+  "NOTE: the Daily Cash form shows POS sales 2,059.60 (probably written part-way through the day) against 3,816.80 on the Main Reading; the Main Reading is used",
+  "NOTE: the meat weights are from the latest-dated version that has 2026-09-22 (Branch Beef  ^0 Chicken Daily consumption 22-09-2026.xlsx in the day's own folder, saved 17 Oct 20:47)",
+  "NOTE: the beef starting, received and ending weights are the sheet's totals and must include the fat/tallow (لية), not just the meat: the older copies of the sheet left it out (about 3 kg of opening stock and 2 kg a day received), which is why the latest-dated version of the sheet is read. check_meat_variance flags beef totals that come without their parts",
+  "CHECK: the Daily Helper sheet is dated '21 Sept 2026' but the folder is 2026-09-22; the sheet's date cell may not have been updated",
+  "NOTE: chicken: the item list implies 7.1 kg sold from 8 confirmed lines, and 7.1 kg when the suggested lines and the 0 lines the readings only spelled differently are counted too (8 lines); the consumption sheet says 37.0 kg sold",
+  "NOTE: beef: the item list implies 1.6 kg sold from 8 confirmed lines, and 1.6 kg when the suggested lines and the 0 lines the readings only spelled differently are counted too (8 lines); the consumption sheet says 4.9 kg sold"
+ ],
+ "tolerances": null,
+ "correction_reason": "demo day",
+ "files_not_read": {
+  "duplicates_of_a_photo": [
+   [
+    "summary_copy.jpeg",
+    "summary.jpeg"
+   ]
+  ],
+  "zero_byte_files": [
+   "zero.jpeg"
+  ],
+  "not_a_menu_report_photo": [
+   "other.jpeg"
+  ],
+  "supply_or_expense_lists": [],
+  "classified_but_unusable": [],
+  "spreadsheets_and_documents": [
+   "Branch Beef  ^0 Chicken Daily consumption 22-09-2026.xlsx",
+   "rent bill.pdf"
+  ]
+ }
+}

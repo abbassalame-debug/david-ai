@@ -1,0 +1,6 @@
+# Everything the test suite imports. The tests are plain Python scripts: python scripts/run_all_tests.py
+-r requirements.txt
+-r requirements-media.txt
+-r requirements-restaurant.txt
+reportlab>=4.0
+av>=12

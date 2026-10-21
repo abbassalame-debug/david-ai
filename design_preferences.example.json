@@ -1,0 +1,502 @@
+{
+ "schema": "design_preferences/v1",
+ "updated": "2026-10-17T19:28:57",
+ "settings": {
+  "arabic.keep_joining": {
+   "value": true,
+   "status": "suggested",
+   "source": "Arabic letters must never be broken apart"
+  },
+  "arabic.direction": {
+   "value": "rtl",
+   "status": "suggested",
+   "source": "Arabic text runs right to left"
+  },
+  "arabic.digits": {
+   "value": "ask",
+   "status": "suggested",
+   "source": "not known; David asks each time until you choose"
+  },
+  "arabic.kashida": {
+   "value": "ask",
+   "status": "suggested",
+   "source": "not known; David asks each time until you choose"
+  },
+  "color.default_rgb_profile": {
+   "value": "sRGB IEC61966-2.1",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 38 of 53 profiled Photoshop files"
+  },
+  "color.default_cmyk_profile": {
+   "value": "U.S. Web Coated (SWOP) v2",
+   "status": "draft",
+   "source": "file scan 2026-10-10: only 3 Photoshop files; confirm with your printer"
+  },
+  "color.default_bit_depth": {
+   "value": 8,
+   "status": "draft",
+   "source": "file scan 2026-10-10: all 69 Photoshop files are 8-bit"
+  },
+  "print.bleed_mm": {
+   "value": 3,
+   "status": "suggested",
+   "source": "industry standard bleed"
+  },
+  "print.margin_mm": {
+   "value": 10,
+   "status": "suggested",
+   "source": "common safe margin"
+  },
+  "print.safe_area_mm": {
+   "value": 5,
+   "status": "suggested",
+   "source": "common safe area"
+  },
+  "naming.separator": {
+   "value": "_",
+   "status": "suggested",
+   "source": "industry standard"
+  },
+  "naming.version_digits": {
+   "value": 2,
+   "status": "suggested",
+   "source": "industry standard (_v01)"
+  },
+  "naming.ascii_only": {
+   "value": true,
+   "status": "suggested",
+   "source": "industry standard"
+  },
+  "naming.allow_spaces": {
+   "value": false,
+   "status": "suggested",
+   "source": "industry standard"
+  },
+  "folders.structure": {
+   "value": [
+    "01_Brief",
+    "02_Assets",
+    "03_Working",
+    "04_Previews",
+    "05_Exports",
+    "06_Delivery",
+    "07_Archive"
+   ],
+   "status": "suggested",
+   "source": "industry standard project skeleton"
+  },
+  "preview.max_side_px": {
+   "value": 1600,
+   "status": "suggested",
+   "source": "size of a proof image"
+  },
+  "logo.clear_space": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  },
+  "logo.min_size_mm": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  },
+  "video.frame_rate": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  },
+  "video.default_ratio": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  },
+  "video.loudness_lufs": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  },
+  "video.caption_style": {
+   "value": null,
+   "status": "unset",
+   "source": "ask the designer"
+  }
+ },
+ "font_order": {
+  "latin": [],
+  "arabic": []
+ },
+ "log": [],
+ "fonts": [
+  {
+   "id": "myriad-pro",
+   "family": "Myriad Pro",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 19,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 19 Illustrator files"
+  },
+  {
+   "id": "britannic-bold",
+   "family": "Britannic Bold",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 18,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 18 Illustrator files"
+  },
+  {
+   "id": "athiya",
+   "family": "Athiya",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 18,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 18 Illustrator files"
+  },
+  {
+   "id": "adobe-arabic",
+   "family": "Adobe Arabic",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 15,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 15 Illustrator files"
+  },
+  {
+   "id": "perfecto-calligraphy-personal-use",
+   "family": "Perfecto Calligraphy - Personal use",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 14,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 14 Illustrator files"
+  },
+  {
+   "id": "sakkal-majalla",
+   "family": "Sakkal Majalla",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 10,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 10 Illustrator files"
+  },
+  {
+   "id": "aaagoldenlotus-stg1-ver1",
+   "family": "AAAGoldenLotus Stg1_Ver1",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 8,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 8 Illustrator files"
+  },
+  {
+   "id": "abdoline",
+   "family": "AbdoLine",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 8,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 8 Illustrator files"
+  },
+  {
+   "id": "montserrat",
+   "family": "Montserrat",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 8,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 8 Illustrator files"
+  },
+  {
+   "id": "alex-brush",
+   "family": "Alex Brush",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 4,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 4 Illustrator files"
+  },
+  {
+   "id": "arial",
+   "family": "Arial",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "yu-gothic-ui",
+   "family": "Yu Gothic UI",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "franklin-gothic-demi",
+   "family": "Franklin Gothic Demi",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "gulzar",
+   "family": "Gulzar",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "decotype-thuluth-ii",
+   "family": "DecoType Thuluth II",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "decotype-naskh-variants",
+   "family": "DecoType Naskh Variants",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  },
+  {
+   "id": "almwaheb-by-a4d",
+   "family": "almwaheb by A4D",
+   "script": "unknown",
+   "role": "any",
+   "use": "allowed",
+   "seen_in_files": 3,
+   "files": [],
+   "status": "draft",
+   "source": "file scan 2026-10-10: used in 3 Illustrator files"
+  }
+ ],
+ "palettes": [],
+ "document_presets": [
+  {
+   "id": "a4-landscape-300",
+   "name": "A4 landscape 300 dpi",
+   "kind": "print",
+   "unit": "px",
+   "width": 3508,
+   "height": 2480,
+   "dpi": 300,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 14 Photoshop files at this size"
+  },
+  {
+   "id": "a4-portrait-300",
+   "name": "A4 portrait 300 dpi",
+   "kind": "print",
+   "unit": "px",
+   "width": 2480,
+   "height": 3508,
+   "dpi": 300,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 3 Photoshop files at this size"
+  },
+  {
+   "id": "square-1080",
+   "name": "Square 1080",
+   "kind": "social",
+   "unit": "px",
+   "width": 1080,
+   "height": 1080,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 3 Photoshop files at this size"
+  },
+  {
+   "id": "story-1080x1920",
+   "name": "Story / reel 9:16",
+   "kind": "social",
+   "unit": "px",
+   "width": 1080,
+   "height": 1920,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard size"
+  },
+  {
+   "id": "portrait-1080x1350",
+   "name": "Portrait 4:5",
+   "kind": "social",
+   "unit": "px",
+   "width": 1080,
+   "height": 1350,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 1 Photoshop files at this size"
+  },
+  {
+   "id": "hd-1920x1080",
+   "name": "Full HD 16:9",
+   "kind": "video",
+   "unit": "px",
+   "width": 1920,
+   "height": 1080,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard size"
+  },
+  {
+   "id": "uhd-3840x2160",
+   "name": "4K UHD 16:9",
+   "kind": "video",
+   "unit": "px",
+   "width": 3840,
+   "height": 2160,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard size"
+  },
+  {
+   "id": "portrait-900x1600",
+   "name": "Portrait 9:16 900x1600",
+   "kind": "social",
+   "unit": "px",
+   "width": 900,
+   "height": 1600,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 3 Photoshop files at this size"
+  },
+  {
+   "id": "wide-3556x2000",
+   "name": "Wide 16:9 3556x2000",
+   "kind": "web",
+   "unit": "px",
+   "width": 3556,
+   "height": 2000,
+   "dpi": 72,
+   "color_mode": "RGB",
+   "status": "draft",
+   "source": "file scan 2026-10-10: 5 Photoshop files at this size"
+  }
+ ],
+ "export_presets": [
+  {
+   "id": "web-png",
+   "name": "Web PNG (sRGB)",
+   "format": "PNG",
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard preset"
+  },
+  {
+   "id": "web-jpg-q85",
+   "name": "Web JPG quality 85",
+   "format": "JPG",
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard preset",
+   "quality": 85
+  },
+  {
+   "id": "social-jpg-q90",
+   "name": "Social JPG quality 90",
+   "format": "JPG",
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard preset",
+   "quality": 90
+  },
+  {
+   "id": "print-pdf-x4",
+   "name": "Print PDF/X-4",
+   "format": "PDF",
+   "color_mode": "CMYK",
+   "status": "suggested",
+   "source": "industry standard preset",
+   "dpi": 300
+  },
+  {
+   "id": "print-tiff-300",
+   "name": "Print TIFF 300 dpi",
+   "format": "TIFF",
+   "color_mode": "CMYK",
+   "status": "suggested",
+   "source": "industry standard preset",
+   "dpi": 300
+  },
+  {
+   "id": "vector-svg",
+   "name": "Vector SVG",
+   "format": "SVG",
+   "color_mode": "RGB",
+   "status": "suggested",
+   "source": "industry standard preset"
+  },
+  {
+   "id": "video-h264",
+   "name": "Video MP4 (H.264)",
+   "format": "MP4",
+   "color_mode": "source",
+   "status": "suggested",
+   "source": "industry standard preset"
+  }
+ ],
+ "dos_donts": [],
+ "reference_roots": [
+  {
+   "id": "reference-designs",
+   "path": "C:\\david-open\\data\\reference_designs",
+   "read_only": true,
+   "note": "a folder of past work used as a style reference (read-only)",
+   "status": "suggested",
+   "source": "file scan 2026-10-10"
+  }
+ ]
+}

@@ -1,0 +1,1050 @@
+{
+ "schema": "menu_cheat_sheet/v1",
+ "combo_upgrade": {
+  "price_usd": 3.85,
+  "note": "Universal upsell: any sandwich, wrap or platter can be upgraded to include fries and a self-service soft drink for a fixed extra price."
+ },
+ "customer_menu": [
+  {
+   "key": "C01",
+   "category": "Chicken Sandwich",
+   "name_en": "Chicken Sandwich Regular",
+   "name_ar": "ساندويش دجاج صغير",
+   "price_usd": 4.2,
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 100,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C02",
+   "category": "Chicken Sandwich",
+   "name_en": "Chicken Sandwich Large",
+   "name_ar": "ساندويش دجاج كبير",
+   "price_usd": 5.7,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C03",
+   "category": "Chicken Sandwich",
+   "name_en": "Chicken Sandwich Tortilla",
+   "name_ar": "ساندويش دجاج تورتيلا",
+   "price_usd": 5.7,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C04",
+   "category": "Chicken Sandwich",
+   "name_en": "Cut Chicken Tortilla Meal",
+   "name_ar": "وجبة دجاج تورتيلا مقطعة",
+   "price_usd": 8.5,
+   "weight_text": "140g",
+   "weight_g": 140,
+   "grams": {
+    "chicken": 140,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C05",
+   "category": "Chicken Sandwich",
+   "name_en": "Chicken Sandwich Platter",
+   "name_ar": "صحن ساندويش دجاج",
+   "price_usd": 9.6,
+   "weight_text": "200g",
+   "weight_g": 200,
+   "grams": {
+    "chicken": 200,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C06",
+   "category": "Chicken Sandwich",
+   "name_en": "Cut Chicken Tortilla Meal Double",
+   "name_ar": "وجبة ساندويش دجاج مقطعة دوبل",
+   "price_usd": 14.3,
+   "weight_text": "280g",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 280,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "with a soft drink"
+  },
+  {
+   "key": "C07",
+   "category": "Chicken Sandwich",
+   "name_en": "Mix Meal",
+   "name_ar": "مكس وجبة",
+   "price_usd": 16.5,
+   "weight_text": "140g + 140g beef",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 140,
+    "beef": 140,
+    "sojok": 0
+   },
+   "note": "the same item is listed again under Beef Sandwich (140g + 140g chicken)"
+  },
+  {
+   "key": "C08",
+   "category": "Chicken Sandwich",
+   "name_en": "Half Kilo of Chicken Sandwich",
+   "name_ar": "نص كيلو ساندويش دجاج",
+   "price_usd": 16.5,
+   "weight_text": "500g",
+   "weight_g": 500,
+   "grams": {
+    "chicken": 500,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C09",
+   "category": "Chicken Sandwich",
+   "name_en": "Kilo of Chicken Sandwich",
+   "name_ar": "كيلو ساندويش دجاج",
+   "price_usd": 33.0,
+   "weight_text": "1000g",
+   "weight_g": 1000,
+   "grams": {
+    "chicken": 1000,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C10",
+   "category": "Beef Sandwich",
+   "name_en": "Beef Sandwich Regular",
+   "name_ar": "ساندويش لحمة صغير",
+   "price_usd": 5.5,
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 0,
+    "beef": 100,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C11",
+   "category": "Beef Sandwich",
+   "name_en": "Beef Sandwich Large",
+   "name_ar": "ساندويش لحمة كبير",
+   "price_usd": 8.8,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 130,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C12",
+   "category": "Beef Sandwich",
+   "name_en": "Beef Sandwich Tortilla",
+   "name_ar": "ساندويش لحمة تورتيلا",
+   "price_usd": 8.8,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 130,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C13",
+   "category": "Beef Sandwich",
+   "name_en": "Cut Tortilla Beef Meal",
+   "name_ar": "وجبة لحمة تورتيلا مقطعة",
+   "price_usd": 11.55,
+   "weight_text": "140g",
+   "weight_g": 140,
+   "grams": {
+    "chicken": 0,
+    "beef": 140,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C14",
+   "category": "Beef Sandwich",
+   "name_en": "Beef Sandwich Platter",
+   "name_ar": "صحن ساندويش لحمة",
+   "price_usd": 13.2,
+   "weight_text": "200g",
+   "weight_g": 200,
+   "grams": {
+    "chicken": 0,
+    "beef": 200,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C15",
+   "category": "Beef Sandwich",
+   "name_en": "Cut Tortilla Beef Meal Double",
+   "name_ar": "وجبة لحمة تورتيلا مقطعة دوبل",
+   "price_usd": 20.35,
+   "weight_text": "280g",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 0,
+    "beef": 280,
+    "sojok": 0
+   },
+   "note": "with a soft drink"
+  },
+  {
+   "key": "C16",
+   "category": "Beef Sandwich",
+   "name_en": "Half Kilo of Beef Sandwich",
+   "name_ar": "نص كيلو ساندويش لحمة",
+   "price_usd": 22.0,
+   "weight_text": "500g",
+   "weight_g": 500,
+   "grams": {
+    "chicken": 0,
+    "beef": 500,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C17",
+   "category": "Beef Sandwich",
+   "name_en": "Kilo of Beef Sandwich",
+   "name_ar": "كيلو ساندويش لحمة",
+   "price_usd": 44.0,
+   "weight_text": "1000g",
+   "weight_g": 1000,
+   "grams": {
+    "chicken": 0,
+    "beef": 1000,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C18",
+   "category": "Classic Items",
+   "name_en": "Chicken Sandwich Wrap",
+   "name_ar": "ساندويش راب دجاج",
+   "price_usd": 5.7,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C19",
+   "category": "Classic Items",
+   "name_en": "Chicken Steak Turkey",
+   "name_ar": "ساندويش دجاج ستيك كلاسيكي",
+   "price_usd": 7.7,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C20",
+   "category": "Classic Items",
+   "name_en": "Chicken Steak Combo",
+   "name_ar": "كومبو ستيك دجاج",
+   "price_usd": 11.0,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "1 Chicken Steak + Fries Box + Soft Drink"
+  },
+  {
+   "key": "C21",
+   "category": "Classic Items",
+   "name_en": "Beef Sandwich Wrap",
+   "name_ar": "ساندويش راب لحمة",
+   "price_usd": 8.8,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 130,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C22",
+   "category": "Classic Items",
+   "name_en": "Steak Sausage",
+   "name_ar": "ستيك سجق",
+   "price_usd": 7.7,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 130
+   },
+   "note": null
+  },
+  {
+   "key": "C23",
+   "category": "Classic Items",
+   "name_en": "Beef Steak Turkey",
+   "name_ar": "ساندويش لحمة ستيك كلاسيكي",
+   "price_usd": 9.9,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 130,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C24",
+   "category": "Offers & Combos",
+   "name_en": "Beef Steak Combo",
+   "name_ar": "كومبو ستيك لحمة",
+   "price_usd": 13.75,
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 130,
+    "sojok": 0
+   },
+   "note": "1 Beef Steak + Fries Box + Soft Drink",
+   "was_price_usd": 11.0
+  },
+  {
+   "key": "C25",
+   "category": "Offers & Combos",
+   "name_en": "Demo Bistro Nuggets",
+   "name_ar": "ديمو ناجتس",
+   "price_usd": 30.8,
+   "weight_text": "780g",
+   "weight_g": 780,
+   "grams": {
+    "chicken": 780,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "36 chicken nuggets, fries, 4 soft drinks, dips"
+  },
+  {
+   "key": "C26",
+   "category": "Offers & Combos",
+   "name_en": "Slider Chicken",
+   "name_ar": "سلايدر دجاج",
+   "price_usd": 19.8,
+   "weight_text": "360g",
+   "weight_g": 360,
+   "grams": {
+    "chicken": 360,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Slider bread with 12 pieces chicken + fries"
+  },
+  {
+   "key": "C27",
+   "category": "Offers & Combos",
+   "name_en": "Slider Nuggets Mix",
+   "name_ar": "سلايدر ناجتس ميكس",
+   "price_usd": 22.0,
+   "weight_text": "570g",
+   "weight_g": 570,
+   "grams": {
+    "chicken": 570,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Slider with 6 chicken nuggets + 18 markook pieces + fries"
+  },
+  {
+   "key": "C28",
+   "category": "Offers & Combos",
+   "name_en": "Slider Mix",
+   "name_ar": "سلايدر ميكس",
+   "price_usd": 26.4,
+   "weight_text": "180g + 180g chicken",
+   "weight_g": 360,
+   "grams": {
+    "chicken": 180,
+    "beef": 180,
+    "sojok": 0
+   },
+   "note": "Slider with 6 beef + 6 chicken + fries"
+  },
+  {
+   "key": "C29",
+   "category": "Offers & Combos",
+   "name_en": "Slider Beef",
+   "name_ar": "سلايدر لحمة",
+   "price_usd": 33.0,
+   "weight_text": "360g",
+   "weight_g": 360,
+   "grams": {
+    "chicken": 0,
+    "beef": 360,
+    "sojok": 0
+   },
+   "note": "Slider bread with 12 pieces beef + fries"
+  },
+  {
+   "key": "C30",
+   "category": "Offers & Combos",
+   "name_en": "Demo Bistro Nuggets (Chicken & Beef)",
+   "name_ar": "ديمو ناجتس دجاج ولحمة",
+   "price_usd": 38.5,
+   "weight_text": "520g + 260g beef",
+   "weight_g": 780,
+   "grams": {
+    "chicken": 520,
+    "beef": 260,
+    "sojok": 0
+   },
+   "note": "mixed nuggets platter: 520g chicken nuggets, 260g beef nuggets"
+  },
+  {
+   "key": "C31",
+   "category": "Salads",
+   "name_en": "Sandwich Caesar Salad",
+   "name_ar": "ساندويش سيزر سالاد",
+   "price_usd": 7.7,
+   "weight_text": "100g",
+   "weight_g": null,
+   "grams": null,
+   "note": "100g of sandwich meat; the sheet does not say chicken or beef"
+  },
+  {
+   "key": "C32",
+   "category": "Salads",
+   "name_en": "Caesar Salad",
+   "name_ar": "سيزر سالاد",
+   "price_usd": 4.4,
+   "weight_text": "—",
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C33",
+   "category": "Salads",
+   "name_en": "Fattoush",
+   "name_ar": "فتوش",
+   "price_usd": 4.4,
+   "weight_text": "—",
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C34",
+   "category": "Fries",
+   "name_en": "Fries Sandwich",
+   "name_ar": "ساندويش بطاطا",
+   "price_usd": 3.85,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "فيها ثوم وحر وكبيس"
+  },
+  {
+   "key": "C35",
+   "category": "Fries",
+   "name_en": "Classic Fries Sandwich",
+   "name_ar": "ساندويش بطاطا كلاسيكي",
+   "price_usd": 3.85,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C36",
+   "category": "Fries",
+   "name_en": "Fries Regular",
+   "name_ar": "بطاطا صغير",
+   "price_usd": 3.3,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C37",
+   "category": "Fries",
+   "name_en": "Fries Large",
+   "name_ar": "بطاطا كبير",
+   "price_usd": 4.95,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C38",
+   "category": "Drinks",
+   "name_en": "Water",
+   "name_ar": "مياه",
+   "price_usd": 0.35,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C39",
+   "category": "Drinks",
+   "name_en": "Pepsi",
+   "name_ar": "بيبسي",
+   "price_usd": 1.2,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C40",
+   "category": "Drinks",
+   "name_en": "Seven Up",
+   "name_ar": "سفن أب",
+   "price_usd": 1.2,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C41",
+   "category": "Drinks",
+   "name_en": "Mirinda",
+   "name_ar": "ميراندا",
+   "price_usd": 1.2,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  },
+  {
+   "key": "C42",
+   "category": "Drinks",
+   "name_en": "Ice Tea",
+   "name_ar": null,
+   "price_usd": 1.2,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "no Arabic name on the sheet"
+  },
+  {
+   "key": "C43",
+   "category": "Drinks",
+   "name_en": "Laban (Yoghurt Drink)",
+   "name_ar": "لبن",
+   "price_usd": 1.2,
+   "weight_text": null,
+   "weight_g": 0,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": null
+  }
+ ],
+ "kitchen_portions": [
+  {
+   "key": "K01",
+   "section": "internal",
+   "name_en": "Add Chicken Sandwich (extra)",
+   "name_ar": "إضافة ساندويش دجاج",
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 100,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Add-on portion, no listed price on customer menu"
+  },
+  {
+   "key": "K02",
+   "section": "internal",
+   "name_en": "Add Beef Sandwich (extra)",
+   "name_ar": "إضافة ساندويش لحمة",
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 0,
+    "beef": 100,
+    "sojok": 0
+   },
+   "note": "Add-on portion, no listed price on customer menu"
+  },
+  {
+   "key": "K03",
+   "section": "internal",
+   "name_en": "Add Sausage (extra)",
+   "name_ar": "إضافة سجق",
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 100
+   },
+   "note": "Add-on portion, no listed price on customer menu"
+  },
+  {
+   "key": "K04",
+   "section": "internal",
+   "name_en": "Staff Meal (Chicken)",
+   "name_ar": "وجبة دجاج موظف",
+   "weight_text": "140g",
+   "weight_g": 140,
+   "grams": {
+    "chicken": 140,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Employee meal portion"
+  },
+  {
+   "key": "K05",
+   "section": "internal",
+   "name_en": "Chicken & Sausage Mix",
+   "name_ar": "مكس دجاج وسجق",
+   "weight_text": "140g + 140g sojok",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 140,
+    "beef": 0,
+    "sojok": 140
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K06",
+   "section": "internal",
+   "name_en": "Beef & Sausage Mix",
+   "name_ar": "مكس لحمة وسجق",
+   "weight_text": "140g + 140g sojok",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 0,
+    "beef": 140,
+    "sojok": 140
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K07",
+   "section": "internal",
+   "name_en": "Chicken Slider (small format)",
+   "name_ar": "سلايدر دجاج",
+   "weight_text": "90g",
+   "weight_g": 90,
+   "grams": {
+    "chicken": 90,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Recipe-sheet entry distinct from the priced \"Slider Chicken\" (360g) - confirm which format is in use before prepping"
+  },
+  {
+   "key": "K08",
+   "section": "internal",
+   "name_en": "Beef Slider (small format)",
+   "name_ar": "سلايدر لحمة",
+   "weight_text": "30g",
+   "weight_g": 30,
+   "grams": {
+    "chicken": 0,
+    "beef": 30,
+    "sojok": 0
+   },
+   "note": "Recipe-sheet entry distinct from the priced \"Slider Beef\" (360g) - confirm which format is in use before prepping"
+  },
+  {
+   "key": "K09",
+   "section": "internal",
+   "name_en": "Chicken Large Combo",
+   "name_ar": "كومبو دجاج كبير",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Chicken Sandwich Large upgraded to combo - same meat weight, adds fries + drink"
+  },
+  {
+   "key": "K10",
+   "section": "internal",
+   "name_en": "Chicken Tortilla Combo",
+   "name_ar": "كومبو دجاج تورتيلا",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 130,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Chicken Sandwich Tortilla upgraded to combo - same meat weight, adds fries + drink"
+  },
+  {
+   "key": "K11",
+   "section": "internal",
+   "name_en": "Nuggets with Beef Sandwich",
+   "name_ar": "ناجتس مع لحمة",
+   "weight_text": "520g + 260g beef",
+   "weight_g": 780,
+   "grams": {
+    "chicken": 520,
+    "beef": 260,
+    "sojok": 0
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K12",
+   "section": "internal",
+   "name_en": "Nuggets with Beef & Sausage",
+   "name_ar": "ناجتس مع لحمة وسجق",
+   "weight_text": "520g + 130g beef + 130g sojok",
+   "weight_g": 780,
+   "grams": {
+    "chicken": 520,
+    "beef": 130,
+    "sojok": 130
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K13",
+   "section": "internal",
+   "name_en": "Offer: 2 Large Sandwich",
+   "name_ar": "عرض 2 ساندويش كبير",
+   "weight_text": "260g",
+   "weight_g": null,
+   "grams": null,
+   "note": "Not currently a separate customer menu item; the sheet gives 260g but not chicken or beef"
+  },
+  {
+   "key": "K14",
+   "section": "internal",
+   "name_en": "Offer: 2 Chicken Tortilla",
+   "name_ar": "عرض 2 ساندويش دجاج تورتيلا",
+   "weight_text": "260g",
+   "weight_g": 260,
+   "grams": {
+    "chicken": 260,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K15",
+   "section": "internal",
+   "name_en": "Offer: Chicken Large + Small",
+   "name_ar": "عرض دجاج كبير+صغير",
+   "weight_text": "230g",
+   "weight_g": 230,
+   "grams": {
+    "chicken": 230,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K16",
+   "section": "internal",
+   "name_en": "Offer: Chicken Tortilla + Small",
+   "name_ar": "عرض دجاج تورتيلا+صغير",
+   "weight_text": "230g",
+   "weight_g": 230,
+   "grams": {
+    "chicken": 230,
+    "beef": 0,
+    "sojok": 0
+   },
+   "note": "Not currently a separate customer menu item"
+  },
+  {
+   "key": "K17",
+   "section": "sojok_line",
+   "name_en": "Sausage Sandwich Small",
+   "name_ar": "سجق صغير",
+   "weight_text": "100g",
+   "weight_g": 100,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 100
+   },
+   "note": "Mirrors Chicken/Beef Regular size"
+  },
+  {
+   "key": "K18",
+   "section": "sojok_line",
+   "name_en": "Sausage Sandwich Large",
+   "name_ar": "سجق كبير",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 130
+   },
+   "note": "Mirrors Chicken/Beef Large size"
+  },
+  {
+   "key": "K19",
+   "section": "sojok_line",
+   "name_en": "Sausage Sandwich Tortilla",
+   "name_ar": "سجق تورتيلا",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 130
+   },
+   "note": "Mirrors Chicken/Beef Tortilla size"
+  },
+  {
+   "key": "K20",
+   "section": "sojok_line",
+   "name_en": "Sausage Sandwich Wrap",
+   "name_ar": "سجق راب",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 130
+   },
+   "note": "Mirrors Chicken/Beef Wrap size"
+  },
+  {
+   "key": "K21",
+   "section": "sojok_line",
+   "name_en": "Sausage Steak Combo",
+   "name_ar": "كومبو ستيك سجق",
+   "weight_text": "130g",
+   "weight_g": 130,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 130
+   },
+   "note": "Steak Sausage + fries + drink"
+  },
+  {
+   "key": "K22",
+   "section": "sojok_line",
+   "name_en": "Sausage Slider",
+   "name_ar": "سلايدر سجق",
+   "weight_text": "30g",
+   "weight_g": 30,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 30
+   },
+   "note": "Mirrors Beef Slider small format"
+  },
+  {
+   "key": "K23",
+   "section": "sojok_line",
+   "name_en": "Sausage Tortilla Meal",
+   "name_ar": "وجبة سجق تورتيلا",
+   "weight_text": "140g",
+   "weight_g": 140,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 140
+   },
+   "note": "Mirrors Chicken/Beef Tortilla Meal"
+  },
+  {
+   "key": "K24",
+   "section": "sojok_line",
+   "name_en": "Sausage Tortilla Meal Double",
+   "name_ar": "وجبة سجق تورتيلا دوبل",
+   "weight_text": "280g",
+   "weight_g": 280,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 280
+   },
+   "note": "Mirrors Chicken/Beef Tortilla Meal Double"
+  },
+  {
+   "key": "K25",
+   "section": "sojok_line",
+   "name_en": "Sausage Plate (200g)",
+   "name_ar": "صحن سجق 200 غرام",
+   "weight_text": "200g",
+   "weight_g": 200,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 200
+   },
+   "note": "Mirrors Chicken/Beef Platter"
+  },
+  {
+   "key": "K26",
+   "section": "sojok_line",
+   "name_en": "Half Kilo Sausage",
+   "name_ar": "نص كيلو سجق",
+   "weight_text": "500g",
+   "weight_g": 500,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 500
+   },
+   "note": "Mirrors Chicken/Beef Half Kilo"
+  },
+  {
+   "key": "K27",
+   "section": "sojok_line",
+   "name_en": "Kilo Sausage",
+   "name_ar": "كيلو سجق",
+   "weight_text": "1000g",
+   "weight_g": 1000,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 1000
+   },
+   "note": "Mirrors Chicken/Beef Kilo"
+  },
+  {
+   "key": "K28",
+   "section": "sojok_line",
+   "name_en": "12 Sausage Pieces (offer)",
+   "name_ar": "عرض 12 سجق",
+   "weight_text": "360g",
+   "weight_g": 360,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 360
+   },
+   "note": "Mirrors the 12 Chicken / 12 Beef Pieces offers"
+  }
+ ],
+ "kitchen_portion_note": "SYNTHETIC: internal recipe weights of the Demo Bistro, not separate menu prices. Use them to portion correctly.",
+ "source": {
+  "file": "Demo_Bistro_Menu_Cheat_Sheet.pdf",
+  "sha256": "a81ac86708aa5fc512c974dd04687a6ee0dee464d631ac14de445e010a8df916",
+  "pages": 5,
+  "verified_on_sheet": "2026-01-01",
+  "currency": "USD",
+  "how": "SYNTHETIC fixture: generated for the demo repository; the menu rows were transcribed from this sheet."
+ }
+}

@@ -1,0 +1,79 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# ── Runtime state and local data (DAVID_DATA / DAVID_VAULTS default to these) ──
+data/
+vaults/
+note_backups/
+lancedb/
+*.db
+*.sqlite
+*.log
+*.log.err
+audit_log.jsonl
+mode.state
+budget.json
+
+# ── Secrets and local configuration: never commit ────────────────────────────
+.env
+.env.*
+!.env.example
+config/vaults.toml
+*.p12
+*.pfx
+*.pem
+*.key
+google_credentials*.json
+google_token*.json
+
+# ── Local copies of user files and generated media ───────────────────────────
+design_preferences.json
+uploads/
+generated/
+downloads/
+for_review/
+restaurant_inbox/
+restaurant_watch/
+jobs_drafts/
+jobs_state/
+_reset_archive/
+/evals/
+examples/templates/*.ai
+examples/templates/*.psd
+
+# ── Model weights and large artifacts ────────────────────────────────────────
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.parquet
+
+# ── Frontend ─────────────────────────────────────────────────────────────────
+node_modules/
+ui/frontend/dist/
+ui/frontend/dist_backup_*/
+
+# ── Third-party tools David talks to (installed separately) ──────────────────
+ComfyUI/
+llama.cpp/
+
+# ── Local assistant / agent configuration and memory: never commit ───────────
+.claude/
+.claude-mem/
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+.playwright-mcp/
+MEMORY.md
+memory/
+
+# ── Editors / OS ─────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

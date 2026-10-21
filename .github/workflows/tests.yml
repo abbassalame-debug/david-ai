@@ -1,0 +1,80 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    # Blocking: the full suite on the platform David is built for. No Ollama, GPU or Adobe app on a hosted runner:
+    # DAVID_CI=1 turns any check that needs one into a counted "SKIP (needs X)" (ci_env.py); today every suite fakes them.
+    name: Windows full suite
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      DAVID_CI: "1"
+      PYTHONUTF8: "1"
+      DAVID_TEST_LOG: ${{ github.workspace }}\test_run.log
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
+            requirements-media.txt
+            requirements-restaurant.txt
+      - name: Install
+        run: python -m pip install -r requirements.txt -r requirements-dev.txt
+      - name: Full test suite
+        run: python scripts/run_all_tests.py
+      - name: Upload the test log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log-windows
+          path: test_run.log
+          if-no-files-found: warn
+
+  ubuntu-core:
+    # Non-blocking: the platform-independent core (Tier A) on Linux, to show where David stands off Windows.
+    name: Ubuntu core suites (non-blocking)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: true
+    env:
+      DAVID_CI: "1"
+      DAVID_TEST_LOG: ${{ github.workspace }}/test_run.log
+      DAVID_SUITES: >-
+        test_agent_spec.py,test_config_invariants.py,test_embedding.py,test_hybrid_guardrails.py,test_ingest.py,
+        test_ingest_rules.py,test_knowledge_privacy.py,test_qwen35_wiring.py,test_remediation_p345.py,
+        test_security_and_routing.py,test_server_security.py,test_tools_policy.py,test_firewall_policy.py,
+        test_namespace_isolation.py,test_transcripts.py,test_run_all_tests.py
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install (core only)
+        run: python -m pip install -r requirements.txt
+      - name: Core suites
+        run: python scripts/run_all_tests.py
+      - name: Upload the test log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log-ubuntu
+          path: test_run.log
+          if-no-files-found: warn

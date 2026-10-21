@@ -1,0 +1,86 @@
+# config/vaults.example.toml -- David's data-boundary policy: which vaults exist, which agent may read which, what is never sent to a cloud model.
+#
+# Copy this file to config/vaults.toml (git-ignored) and edit it for your own vaults. If config/vaults.toml does not exist this example is used.
+# Every regular expression is a TOML *literal* string ('...'), so backslashes are written once.
+
+# --- vaults: namespace id -> folder name under DAVID_VAULTS ---------------------------------------------------------------------------
+[vaults]
+system   = "System"
+business = "Business"
+music    = "Music"
+lore     = "Lore"
+research = "Research"
+
+[boundaries]
+# Namespaces that are never searched, listed or sent to a cloud model unless an agent names them explicitly in [agent_namespaces].
+firewalled = ["research"]
+
+# Vault folder names whose paths are treated as confidential by the DLP pre-flight (a message that mentions such a path stays local).
+private_vault_folders = ["Business", "Research"]
+
+# --- per-agent retrieval namespaces: an agent that is not listed gets NO vault (fail closed) ---------------------------------------------
+# "books" is the page-cited book library; it is an index area, not a folder.
+[agent_namespaces]
+chief_of_staff      = ["system", "business", "music", "books"]
+developer           = ["system", "business"]
+uiux_engineer       = ["system", "business", "music"]
+creative_director   = ["business", "music", "lore", "books"]
+brand_audience      = ["business", "music"]
+beat_architect      = ["music", "business"]
+cfo                 = ["business", "system"]
+executive_advisor   = ["business", "system", "music", "books"]
+venture_architect   = ["business", "system", "books"]
+legal_counsel       = ["business", "system"]
+analyst             = ["business", "system", "music", "lore", "books"]
+linguist            = ["research"]
+acoustician         = ["music"]
+language_specialist = ["research", "system"]
+lore_keeper         = ["lore", "music"]
+performance_coach   = ["system"]
+prompt_architect    = ["system"]
+
+# When a primary search returns fewer than 3 results, these extra vaults are searched too.
+[cross_vault_fallback]
+business = ["music"]
+music    = ["business"]
+lore     = ["music", "business"]
+system   = []
+research = []
+
+# --- DLP: any match keeps the request local (no Gemini / Claude) ------------------------------------------------------------------------
+# A regex/keyword first filter, not a confidentiality boundary: it has no semantic understanding.
+[dlp]
+patterns = [
+    # credential-looking assignments
+    '(?i)api[_\s]?key\s*[:=]\s*\S+',
+    '(?i)password\s*[:=]\s*\S+',
+    '(?i)secret[_\s]?key\s*[:=]\s*\S+',
+    '(?i)private[_\s]?key\s*[:=]\s*\S+',
+    '(?i)access[_\s]?token\s*[:=]\s*\S+',
+    # English sensitive labels
+    '(?i)\bconfidential\b',
+    '(?i)\bsocial security\b',
+    '(?i)\bssn\b',
+    '(?i)\bpassport\s*(no\.?|number)?\s*[:=]?\s*[A-Z0-9]{6,9}\b',
+    '(?i)\binternal[_\s-]?use[_\s-]?only\b',
+    '(?i)\bdo not (share|forward|distribute)\b',
+    '(?i)\bresearch[_\s-]?vault\b',
+    # Arabic sensitive keywords (whole words with context; bare substrings over-blocked everyday words)
+    '\bسري\b',
+    '\bسري[ةّ]?\s+(?:للغاية|جدا|جداً)',
+    '\bخاص[ةّ]?\s+(?:جدا|جداً|للغاية)',
+    '\bكلمة\s+(?:ال)?مرور\b',
+    '\bرقم\s+البطاقة\b',
+    '\bرقم\s+الحساب\b',
+    '\bلا\s+تشارك',
+]
+
+# --- knowledge privacy: facts from these sources are never extracted or shown ------------------------------------------------------------
+[privacy]
+# A source path containing any of these (case-sensitive substring) is a raw people table: its facts are hidden, never deleted.
+sensitive_path_markers = [
+    "student data", "students list", "student attendance", "staff list", "employees", "payroll",
+    "بيانات الطلاب", "حضور الطلاب", "قائمة الطلاب", "الموظفين", "رواتب",
+]
+# A fact whose predicate matches is hidden wherever it came from.
+sensitive_predicate = '(phone|mobile|whats\s?app|e-?mail|salary|payroll|national id|student id|id number|date of birth|birth ?date|passport|iban|account number|attendance)'

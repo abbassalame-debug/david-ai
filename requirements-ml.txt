@@ -1,0 +1,3 @@
+# Optional: the bge-m3 embedder (DAVID_EMBEDDER=bge-m3) and local fine-tuning experiments. The default embedder (Qwen3-Embedding via Ollama) needs none of this.
+# Install PyTorch separately, from the index that matches your CUDA version: https://pytorch.org/get-started/locally/
+sentence-transformers==5.5.1

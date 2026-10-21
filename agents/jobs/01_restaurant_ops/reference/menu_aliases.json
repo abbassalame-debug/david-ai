@@ -1,0 +1,820 @@
+{
+ "schema": "menu_aliases/v1",
+ "how_to_use": "SYNTHETIC alias list for the Demo Bistro: spellings a receipt prints that the sheet does not contain, each tied to an item key. Only 'confirmed' entries are used for matching.",
+ "aliases": [
+  {
+   "ar": "ستيك دجاج",
+   "item": "C19",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ستيك لحمة",
+   "item": "C23",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ساندويش دجاج راب",
+   "item": "C18",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ساندويش لحمة راب",
+   "item": "C21",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "راب ساندويش دجاج",
+   "item": "C18",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "كيلو دجاج",
+   "item": "C09",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "نص كيلو دجاج",
+   "item": "C08",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "كيلو لحمة",
+   "item": "C17",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "نص كيلو لحمة",
+   "item": "C16",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة ساندويش دجاج تورتيلا",
+   "item": "C04",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمة تورتيلا",
+   "item": "C13",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة دجاج تورتيلا دوبل",
+   "item": "C06",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمة تورتيلا دوبل",
+   "item": "C15",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة مكس دجاج ولحمة",
+   "item": "C07",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة MIX",
+   "item": "C07",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سيزر",
+   "item": "C32",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "عرض ديمو ناجتس",
+   "item": "C25",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر 6 دجاج+18 قطعة تورتيلا",
+   "item": "C27",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر دجاج 12 حبة",
+   "item": "C26",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "عرض 6+6",
+   "item": "C28",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر لحمة 12 حبة",
+   "item": "C29",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر 12 دجاج",
+   "item": "C26",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر 12 لحمة",
+   "item": "C29",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "مياه معدنية",
+   "item": "C38",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "لبن عيران",
+   "item": "C43",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة موظف دجاج",
+   "item": "K04",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سندويش بطاطا",
+   "item": "C34",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سندويش بطاطا كلاسيكي",
+   "item": "C35",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "راب ساندويش لحمة",
+   "item": "C21",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة دجاج مقطعه دوبل مع بارد",
+   "item": "C06",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمه تورتيلا مقطعه دوبل مع بارد",
+   "item": "C15",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمة تورتيلا مقطعه دوبل مع بارد",
+   "item": "C15",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "مع ساندويش لحمة",
+   "item": "K02",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "مع ساندويش دجاج",
+   "item": "K01",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر 6 دجاج+6 لحمه",
+   "item": "C28",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "كبير 6 دجاج+18 قطعة تورتيلا",
+   "item": "C27",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة دجاج مقطع مع دوبل بارد",
+   "item": "C06",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمة تورتيلا مقطع مع دوبل بارد",
+   "item": "C15",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "علبة حر كبيرة",
+   "item": "X07",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمه تورتيلا مقطع دوبل مع بارد",
+   "item": "C15",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة لحمه تورتيلا مقطع",
+   "item": "C13",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "دايت بيبسي",
+   "item": "X01",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة دجاج مقطع مع بارد",
+   "item": "C06",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "طراطور كبير",
+   "item": "X05",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "سلايدر G دجاج +18 قطعة تورتيلا",
+   "item": "C27",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "وجبة دجاج",
+   "item": "K04",
+   "status": "confirmed",
+   "evidence": "Printed on a synthetic demo receipt.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ميرندا",
+   "item": "C41",
+   "status": "confirmed",
+   "evidence": "Synthetic misspelling for the tests.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ميRANDA",
+   "item": "C41",
+   "status": "confirmed",
+   "evidence": "Synthetic misspelling for the tests.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ميراندة",
+   "item": "C41",
+   "status": "confirmed",
+   "evidence": "Synthetic misspelling for the tests.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "ar": "ميزاندا",
+   "item": "C41",
+   "status": "confirmed",
+   "evidence": "Synthetic misspelling for the tests.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  }
+ ],
+ "not_on_the_sheet": [
+  {
+   "ar": "عرض 12 دجاج",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic."
+  },
+  {
+   "ar": "عرض 12 لحمة",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic."
+  },
+  {
+   "ar": "عرض 4$",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic."
+  }
+ ],
+ "pos_line_decisions": [
+  {
+   "ar": "سلايدر دجاج",
+   "item": "K07",
+   "grams": {
+    "chicken": 30
+   },
+   "not_item": [
+    "C26"
+   ],
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: a POS line that says only 'سلايدر دجاج' is 30 g chicken.",
+   "sheet_differs": "The synthetic sheet's kitchen portion differs; the ruling above is used for the POS line."
+  },
+  {
+   "ar": "سلايدر لحمة",
+   "item": "K08",
+   "grams": {
+    "beef": 30
+   },
+   "not_item": [
+    "C29"
+   ],
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: a POS line that says only 'سلايدر لحمة' is 30 g beef.",
+   "sheet_differs": "The synthetic sheet's kitchen portion differs; the ruling above is used for the POS line."
+  },
+  {
+   "ar": "عرض 2 ساندويش كبير",
+   "item": "K13",
+   "grams": {
+    "chicken": 260
+   },
+   "not_item": [],
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: a POS line that says only 'عرض 2 ساندويش كبير' is 260 g chicken.",
+   "sheet_differs": "The synthetic sheet's kitchen portion differs; the ruling above is used for the POS line."
+  }
+ ],
+ "unlisted_items": [
+  {
+   "item_id": "X01",
+   "name_ar": "بيبسي دايت",
+   "name_en": "Diet Pepsi",
+   "category": "Drinks",
+   "price_usd": 1.2,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X02",
+   "name_ar": "وجبة موظف بطاطا",
+   "name_en": "Staff meal (fries)",
+   "category": "kitchen",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X03",
+   "name_ar": "سفن اب دايت",
+   "name_en": "Diet Seven Up",
+   "category": "Drinks",
+   "price_usd": 1.2,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X04",
+   "name_ar": "علبه طراطور صغير",
+   "name_en": "Tartar sauce tub (small)",
+   "category": "Sauces",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X05",
+   "name_ar": "علبه طراطور كبير",
+   "name_en": "Tartar sauce tub (large)",
+   "category": "Sauces",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X06",
+   "name_ar": "علبة ثوم صغيرة",
+   "name_en": "Garlic sauce tub (small)",
+   "category": "Sauces",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X07",
+   "name_ar": "علبة ثوم كبيرة",
+   "name_en": "Garlic sauce tub (large)",
+   "category": "Sauces",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X08",
+   "name_ar": "خبز كلاسيكي",
+   "name_en": "Classic bread",
+   "category": "Bread",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X09",
+   "name_ar": "كومبو ستيك ميكس",
+   "name_en": "Steak Mix Combo",
+   "category": "Offers & Combos",
+   "price_usd": null,
+   "grams": {
+    "chicken": 65,
+    "beef": 65,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X10",
+   "name_ar": "ستيك ميكس",
+   "name_en": "Steak Mix",
+   "category": "Classic Items",
+   "price_usd": null,
+   "grams": {
+    "chicken": 65,
+    "beef": 65,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "evidence": "Synthetic: an item the demo sheet does not list.",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01"
+  },
+  {
+   "item_id": "X11",
+   "name_ar": "علبة حر صغيرة",
+   "name_en": "Hot sauce tub (small)",
+   "category": "Sauces",
+   "price_usd": null,
+   "grams": {
+    "chicken": 0,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X12",
+   "name_ar": "شايكر سيزر لحم",
+   "name_en": "Beef Caesar Shaker",
+   "category": "Shakers",
+   "price_usd": 8.8,
+   "grams": {
+    "chicken": 0,
+    "beef": 100,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X13",
+   "name_ar": "شايكر كلاسيكية لحم",
+   "name_en": "Beef Classic Shaker",
+   "category": "Shakers",
+   "price_usd": 9.35,
+   "grams": {
+    "chicken": 0,
+    "beef": 100,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X14",
+   "name_ar": "شايكر سيزر دجاج",
+   "name_en": "Chicken Caesar Shaker",
+   "category": "Shakers",
+   "price_usd": 7.15,
+   "grams": {
+    "chicken": 120,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X15",
+   "name_ar": "شايكر كلاسيكية دجاج",
+   "name_en": "Chicken Classic Shaker",
+   "category": "Shakers",
+   "price_usd": 7.7,
+   "grams": {
+    "chicken": 120,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X16",
+   "name_ar": "عرض2ساندويش لحمه كبير",
+   "name_en": "Offer 2 beef large",
+   "category": "Offers & Combos",
+   "price_usd": 13.2,
+   "grams": {
+    "chicken": 0,
+    "beef": 260,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X17",
+   "name_ar": "عرض2 ساندويش دجاج صغير كومبو",
+   "name_en": "Offer 2 chicken regular combo (with a drink)",
+   "category": "Offers & Combos",
+   "price_usd": 9.8,
+   "grams": {
+    "chicken": 200,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  },
+  {
+   "item_id": "X18",
+   "name_ar": "عرض وجبه دوبل تورتيلا مقطعه",
+   "name_en": "16 Pieces cut chicken tortilla meal double (promotion: fries, no drink)",
+   "category": "Offers & Combos",
+   "price_usd": 10.4,
+   "grams": {
+    "chicken": 280,
+    "beef": 0,
+    "sojok": 0
+   },
+   "status": "confirmed",
+   "confirmed_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "evidence": "Synthetic: an item the demo sheet does not list."
+  }
+ ],
+ "ignored_line_rules": [
+  {
+   "kind": "without",
+   "starts_with": [
+    "بدون"
+   ],
+   "contains": [],
+   "status": "confirmed",
+   "decided_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: lines of kind 'without' are not items and are left out of the item lines."
+  },
+  {
+   "kind": "extra",
+   "starts_with": [
+    "زيادة"
+   ],
+   "contains": [],
+   "status": "confirmed",
+   "decided_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: lines of kind 'extra' are not items and are left out of the item lines."
+  },
+  {
+   "kind": "free",
+   "starts_with": [],
+   "contains": [
+    "مجاني",
+    "مجالي"
+   ],
+   "status": "confirmed",
+   "decided_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: lines of kind 'free' are not items and are left out of the item lines."
+  },
+  {
+   "kind": "order option",
+   "starts_with": [
+    "فقط"
+   ],
+   "contains": [],
+   "equals": [
+    "Summary By Items",
+    "ثوم خفيف",
+    "حر",
+    "خفيف صوص",
+    "صوص خفيف",
+    "قبيعة",
+    "مع بطاطا",
+    "مقطو عه باللص",
+    "كاتشاب",
+    "مقطوعة بالنص"
+   ],
+   "status": "confirmed",
+   "decided_by": "Demo Manager",
+   "confirmed_on": "2026-01-01",
+   "decision": "Demo ruling: lines of kind 'order option' are not items and are left out of the item lines."
+  }
+ ]
+}

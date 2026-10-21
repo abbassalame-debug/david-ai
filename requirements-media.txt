@@ -1,0 +1,16 @@
+# Images, PSD files, audio and speech-to-text, music tools. Apache-2.0 / MIT / BSD / ISC / HPND unless noted.
+Pillow==12.2.0
+psd-tools==1.17.2
+faster-whisper==1.2.1
+librosa==0.11.0
+soundfile==0.14.0
+scipy==1.17.1
+opencv-python>=4.8          # design_handshake.py (reads a rendered PNG back)
+python-osc==1.10.2          # ableton_bridge.py / studio_mode.py (AbletonOSC)
+
+# ── OPTIONAL, COPYLEFT: not needed to run David. Install only if you accept the license. ──────────────────────────────
+# PyMuPDF is dual-licensed AGPL-3.0 / commercial (Artifex). With it installed David reads PDFs with better Arabic/RTL word order and
+# shaping; without it every PDF reader falls back to pypdf (BSD-3-Clause). Distributing a build that includes PyMuPDF brings AGPL-3.0 with it.
+# PyMuPDF==1.27.2.3
+# mutagen (GPL-2.0-or-later) reads audio tags; without it audio/video files are cataloged by name and size only.
+# mutagen==1.47.0

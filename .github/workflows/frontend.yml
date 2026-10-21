@@ -1,0 +1,33 @@
+name: frontend
+
+on:
+  push:
+    paths: ["ui/frontend/**", ".github/workflows/frontend.yml"]
+  pull_request:
+    paths: ["ui/frontend/**", ".github/workflows/frontend.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: HUD type-check and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ui/frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ui/frontend/package-lock.json
+      - name: Install (exact lockfile)
+        run: npm ci
+      - name: Type-check
+        run: npx tsc -b
+      - name: Build
+        run: npm run build

@@ -1,0 +1,100 @@
+{
+ "_comment": "SYNTHETIC demo registry. Templates the brand tools may fill. Fields are found by the template's own placeholder text (exact, and exactly one frame must match). Adding a template = inspect it (live text frames, fonts), then add an entry. Paths are relative to template_root, which is relative to DAVID_HOME.",
+ "template_root": "examples/templates",
+ "templates": {
+  "cert_excellence_ar": {
+   "title": "شهادة تميز (Excellence certificate, Arabic)",
+   "kind": "certificate",
+   "app": "illustrator",
+   "language": "ar",
+   "source": "cert_excellence_ar.ai",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "fields": {
+    "recipient_name": {
+     "label": "Recipient name",
+     "anchor_text": "اسم المستلم",
+     "script": "arabic",
+     "font": "Gulzar-Regular",
+     "max_chars": 40,
+     "lines": 1,
+     "digits": "keep",
+     "case": "keep"
+    }
+   }
+  },
+  "cert_appreciation_en": {
+   "title": "Certificate of Appreciation (English), the 'شكر وتقدير' file",
+   "kind": "certificate",
+   "app": "illustrator",
+   "language": "en",
+   "source": "cert_appreciation_en.ai",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "fields": {
+    "recipient_name": {
+     "label": "Recipient name",
+     "anchor_text": "SAMPLE RECIPIENT",
+     "script": "latin",
+     "font": "BritannicBold",
+     "max_chars": 30,
+     "lines": 1,
+     "digits": "keep",
+     "case": "upper"
+    }
+   }
+  },
+  "cert_trainers_en": {
+   "title": "Certificate of Appreciation for language trainers (English)",
+   "kind": "certificate",
+   "app": "illustrator",
+   "language": "en",
+   "source": "cert_trainers_en.ai",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "fields": {
+    "recipient_name": {
+     "label": "Recipient name",
+     "anchor_text": "SAMPLE RECIPIENT",
+     "script": "latin",
+     "font": "BritannicBold",
+     "max_chars": 30,
+     "lines": 1,
+     "digits": "keep",
+     "case": "upper"
+    }
+   }
+  },
+  "cert_branch_manager_en": {
+   "title": "Certificate of Appreciation for branch managers (English)",
+   "kind": "certificate",
+   "app": "illustrator",
+   "language": "en",
+   "source": "cert_branch_manager_en.ai",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "fields": {
+    "recipient_name": {
+     "label": "Recipient name",
+     "anchor_text": "SAMPLE RECIPIENT",
+     "script": "latin",
+     "font": "BritannicBold",
+     "max_chars": 30,
+     "lines": 1,
+     "digits": "keep",
+     "case": "upper"
+    }
+   }
+  }
+ },
+ "not_ready": [
+  {
+   "what": "Brochures (a multi-page children's course brochure)",
+   "why": "dozens of unnamed text frames in several layers: needs a field map written with the designer before it can be filled safely"
+  },
+  {
+   "what": "A branch poster",
+   "why": "every text frame exists twice (a print and a web layer): needs a field map before it can be filled safely"
+  },
+  {
+   "what": "A promotional flyer",
+   "why": "its text sits in outlined paths, not live text frames: it needs to be rebuilt with live text before it can be filled"
+  }
+ ]
+}

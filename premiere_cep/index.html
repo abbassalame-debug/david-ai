@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background: #1e1e1e;
+    color: #d0d0d0;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+    padding: 12px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+h2 {
+    color: #e94560;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+#status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #2a2a2a;
+    border-radius: 5px;
+    padding: 7px 10px;
+    flex-shrink: 0;
+}
+#dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #555;
+    flex-shrink: 0;
+    transition: background 0.3s;
+}
+#dot.ok      { background: #4caf50; }
+#dot.running { background: #ff9800; animation: pulse 1s infinite; }
+#dot.error   { background: #f44336; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+#status-text { color: #bbb; font-size: 11px; }
+#stats {
+    display: flex; gap: 8px; flex-shrink: 0;
+}
+.stat {
+    flex: 1; background: #2a2a2a; border-radius: 5px;
+    padding: 6px 8px; text-align: center;
+}
+.stat-num  { font-size: 18px; font-weight: 700; color: #e94560; }
+.stat-lbl  { font-size: 9px; color: #666; letter-spacing: 1px; text-transform: uppercase; }
+#log-header { font-size: 10px; color: #555; letter-spacing: 1px; flex-shrink: 0; }
+#log {
+    background: #111;
+    border-radius: 5px;
+    padding: 8px;
+    flex: 1;
+    overflow-y: auto;
+    font-family: 'Consolas', monospace;
+    font-size: 10px;
+    min-height: 0;
+}
+.ll { padding: 2px 0; border-bottom: 1px solid #1a1a1a; }
+.ll.ok  { color: #4caf50; }
+.ll.err { color: #f44336; }
+.ll.cmd { color: #64b5f6; }
+.ll.info{ color: #888; }
+#queue-path { font-size: 9px; color: #3a3a3a; flex-shrink: 0; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<h2>DAVID AI — PREMIERE</h2>
+
+<div id="status-bar">
+    <div id="dot"></div>
+    <span id="status-text">Initialising...</span>
+</div>
+
+<div id="stats">
+    <div class="stat">
+        <div class="stat-num" id="cnt-done">0</div>
+        <div class="stat-lbl">Done</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num" id="cnt-pending">0</div>
+        <div class="stat-lbl">Pending</div>
+    </div>
+    <div class="stat">
+        <div class="stat-num" id="cnt-err">0</div>
+        <div class="stat-lbl">Errors</div>
+    </div>
+</div>
+
+<div id="log-header">COMMAND LOG</div>
+<div id="log"></div>
+<div id="queue-path">Queue: (set by install.ps1)</div>
+
+<script src="config.js"></script>
+<script>
+// ── Node.js file access via CEP --enable-nodejs ───────────────────────────
+const fs   = require('fs');
+const QUEUE = (typeof DAVID_QUEUE_PATH !== 'undefined') ? DAVID_QUEUE_PATH : '';   // defined by config.js, written by install.ps1
+document.getElementById('queue-path').textContent = 'Queue: ' + (QUEUE || '(not configured: run install.ps1)');
+
+// ── UI ────────────────────────────────────────────────────────────────────
+const dot        = document.getElementById('dot');
+const statusText = document.getElementById('status-text');
+const logEl      = document.getElementById('log');
+const cntDone    = document.getElementById('cnt-done');
+const cntPending = document.getElementById('cnt-pending');
+const cntErr     = document.getElementById('cnt-err');
+
+function setStatus(cls, msg) {
+    dot.className  = cls;
+    statusText.textContent = msg;
+}
+
+function addLog(msg, cls) {
+    const ts   = new Date().toLocaleTimeString();
+    const el   = document.createElement('div');
+    el.className   = 'll ' + (cls || 'info');
+    el.textContent = '[' + ts + '] ' + msg;
+    logEl.prepend(el);
+    while (logEl.children.length > 60) logEl.removeChild(logEl.lastChild);
+}
+
+// ── Queue helpers ─────────────────────────────────────────────────────────
+function readQueue() {
+    try {
+        if (!fs.existsSync(QUEUE)) return { commands: [] };
+        return JSON.parse(fs.readFileSync(QUEUE, 'utf8'));
+    } catch(e) { return { commands: [] }; }
+}
+
+function writeQueue(data) {
+    fs.writeFileSync(QUEUE, JSON.stringify(data, null, 2), 'utf8');
+}
+
+function updateStats(data) {
+    const cmds = data.commands || [];
+    cntDone.textContent    = cmds.filter(c => c.status === 'done').length;
+    cntPending.textContent = cmds.filter(c => c.status === 'pending').length;
+    cntErr.textContent     = cmds.filter(c => c.status === 'error').length;
+}
+
+// ── ExtendScript bridge ───────────────────────────────────────────────────
+function evalScript(code, cb) {
+    window.__adobe_cep__.evalScript(code, cb || function(){});
+}
+
+// ── Poll loop ─────────────────────────────────────────────────────────────
+let busy = false;
+
+function poll() {
+    const data    = readQueue();
+    const pending = (data.commands || []).filter(c => c.status === 'pending');
+    updateStats(data);
+
+    if (pending.length === 0) {
+        if (!busy) setStatus('ok', 'Ready — waiting for commands');
+        return;
+    }
+    if (busy) return;
+
+    busy = true;
+    const cmd = pending[0];
+    setStatus('running', 'Running: ' + cmd.action + ' [' + cmd.id + ']');
+    addLog('CMD ' + cmd.id + ' → ' + cmd.action, 'cmd');
+
+    // Mark in-progress
+    const idx = data.commands.findIndex(c => c.id === cmd.id);
+    data.commands[idx].status = 'running';
+    writeQueue(data);
+
+    evalScript('davidExecute(' + JSON.stringify(cmd) + ')', function(result) {
+        const fresh = readQueue();
+        const i2    = fresh.commands.findIndex(c => c.id === cmd.id);
+        if (i2 !== -1) {
+            const ok = result && result.indexOf('DAVID_ERR:') !== 0;
+            fresh.commands[i2].status      = ok ? 'done' : 'error';
+            fresh.commands[i2].result      = result || '';
+            fresh.commands[i2].finished_at = new Date().toISOString();
+            writeQueue(fresh);
+            updateStats(fresh);
+            if (ok) {
+                addLog('OK  ' + cmd.id + ': ' + (result || '').slice(0, 100), 'ok');
+                setStatus('ok', 'Done: ' + cmd.action);
+            } else {
+                addLog('ERR ' + cmd.id + ': ' + (result || '').slice(0, 100), 'err');
+                setStatus('error', 'Error on: ' + cmd.action);
+            }
+        }
+        busy = false;
+    });
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────
+addLog('David Premiere CEP panel started', 'ok');
+setStatus('', 'Starting...');
+
+// Ensure queue file exists
+if (!fs.existsSync(QUEUE)) writeQueue({ commands: [] });
+
+setInterval(poll, 2000);
+poll();
+</script>
+</body>
+</html>

@@ -1,0 +1,978 @@
+[
+ {
+  "id": "pos-001",
+  "pos_name_ar": "ساندويش دجاج صغير",
+  "active": true,
+  "chicken_g": 100,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-002",
+  "pos_name_ar": "ساندويش دجاج كبير",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-003",
+  "pos_name_ar": "ساندويش دجاج تورتيلا",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-004",
+  "pos_name_ar": "وجبة دجاج تورتيلا مقطعة",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-005",
+  "pos_name_ar": "صحن ساندويش دجاج",
+  "active": true,
+  "chicken_g": 200,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-006",
+  "pos_name_ar": "وجبة ساندويش دجاج مقطعة دوبل",
+  "active": true,
+  "chicken_g": 280,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-007",
+  "pos_name_ar": "مكس وجبة",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-008",
+  "pos_name_ar": "نص كيلو ساندويش دجاج",
+  "active": true,
+  "chicken_g": 500,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-009",
+  "pos_name_ar": "كيلو ساندويش دجاج",
+  "active": true,
+  "chicken_g": 1000,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-010",
+  "pos_name_ar": "ساندويش لحمة صغير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 100,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-011",
+  "pos_name_ar": "ساندويش لحمة كبير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-012",
+  "pos_name_ar": "ساندويش لحمة تورتيلا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-013",
+  "pos_name_ar": "وجبة لحمة تورتيلا مقطعة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-014",
+  "pos_name_ar": "صحن ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 200,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-015",
+  "pos_name_ar": "وجبة لحمة تورتيلا مقطعة دوبل",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-016",
+  "pos_name_ar": "نص كيلو ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 500,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-017",
+  "pos_name_ar": "كيلو ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 1000,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-018",
+  "pos_name_ar": "ساندويش راب دجاج",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-019",
+  "pos_name_ar": "ساندويش دجاج ستيك كلاسيكي",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-020",
+  "pos_name_ar": "كومبو ستيك دجاج",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-021",
+  "pos_name_ar": "ساندويش راب لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-022",
+  "pos_name_ar": "ستيك سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-023",
+  "pos_name_ar": "ساندويش لحمة ستيك كلاسيكي",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-024",
+  "pos_name_ar": "كومبو ستيك لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-025",
+  "pos_name_ar": "ديمو ناجتس",
+  "active": true,
+  "chicken_g": 780,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-026",
+  "pos_name_ar": "سلايدر دجاج",
+  "active": true,
+  "chicken_g": 360,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-027",
+  "pos_name_ar": "سلايدر ناجتس ميكس",
+  "active": true,
+  "chicken_g": 570,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-028",
+  "pos_name_ar": "سلايدر ميكس",
+  "active": true,
+  "chicken_g": 180,
+  "beef_g": 180,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-029",
+  "pos_name_ar": "سلايدر لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 360,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-030",
+  "pos_name_ar": "ديمو ناجتس دجاج ولحمة",
+  "active": true,
+  "chicken_g": 520,
+  "beef_g": 260,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-031",
+  "pos_name_ar": "ساندويش سيزر سالاد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-032",
+  "pos_name_ar": "سيزر سالاد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-033",
+  "pos_name_ar": "فتوش",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-034",
+  "pos_name_ar": "ساندويش بطاطا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-035",
+  "pos_name_ar": "ساندويش بطاطا كلاسيكي",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-036",
+  "pos_name_ar": "بطاطا صغير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-037",
+  "pos_name_ar": "بطاطا كبير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-038",
+  "pos_name_ar": "مياه",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-039",
+  "pos_name_ar": "بيبسي",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-040",
+  "pos_name_ar": "سفن أب",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-041",
+  "pos_name_ar": "ميراندا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-042",
+  "pos_name_ar": "لبن",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-043",
+  "pos_name_ar": "إضافة ساندويش دجاج",
+  "active": true,
+  "chicken_g": 100,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-044",
+  "pos_name_ar": "إضافة ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 100,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-045",
+  "pos_name_ar": "إضافة سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 100
+ },
+ {
+  "id": "pos-046",
+  "pos_name_ar": "وجبة دجاج موظف",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-047",
+  "pos_name_ar": "مكس دجاج وسجق",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 0,
+  "sausage_g": 140
+ },
+ {
+  "id": "pos-048",
+  "pos_name_ar": "مكس لحمة وسجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 140,
+  "sausage_g": 140
+ },
+ {
+  "id": "pos-049",
+  "pos_name_ar": "كومبو دجاج كبير",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-050",
+  "pos_name_ar": "كومبو دجاج تورتيلا",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-051",
+  "pos_name_ar": "ناجتس مع لحمة",
+  "active": true,
+  "chicken_g": 520,
+  "beef_g": 260,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-052",
+  "pos_name_ar": "ناجتس مع لحمة وسجق",
+  "active": true,
+  "chicken_g": 520,
+  "beef_g": 130,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-053",
+  "pos_name_ar": "عرض 2 ساندويش كبير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-054",
+  "pos_name_ar": "عرض 2 ساندويش دجاج تورتيلا",
+  "active": true,
+  "chicken_g": 260,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-055",
+  "pos_name_ar": "عرض دجاج كبير+صغير",
+  "active": true,
+  "chicken_g": 230,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-056",
+  "pos_name_ar": "عرض دجاج تورتيلا+صغير",
+  "active": true,
+  "chicken_g": 230,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-057",
+  "pos_name_ar": "سجق صغير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 100
+ },
+ {
+  "id": "pos-058",
+  "pos_name_ar": "سجق كبير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-059",
+  "pos_name_ar": "سجق تورتيلا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-060",
+  "pos_name_ar": "سجق راب",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-061",
+  "pos_name_ar": "كومبو ستيك سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 130
+ },
+ {
+  "id": "pos-062",
+  "pos_name_ar": "سلايدر سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 30
+ },
+ {
+  "id": "pos-063",
+  "pos_name_ar": "وجبة سجق تورتيلا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 140
+ },
+ {
+  "id": "pos-064",
+  "pos_name_ar": "وجبة سجق تورتيلا دوبل",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 280
+ },
+ {
+  "id": "pos-065",
+  "pos_name_ar": "صحن سجق 200 غرام",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 200
+ },
+ {
+  "id": "pos-066",
+  "pos_name_ar": "نص كيلو سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 500
+ },
+ {
+  "id": "pos-067",
+  "pos_name_ar": "كيلو سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 1000
+ },
+ {
+  "id": "pos-068",
+  "pos_name_ar": "عرض 12 سجق",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 360
+ },
+ {
+  "id": "pos-069",
+  "pos_name_ar": "ستيك دجاج",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-070",
+  "pos_name_ar": "ستيك لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-071",
+  "pos_name_ar": "ساندويش دجاج راب",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-072",
+  "pos_name_ar": "ساندويش لحمة راب",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-073",
+  "pos_name_ar": "راب ساندويش دجاج",
+  "active": true,
+  "chicken_g": 130,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-074",
+  "pos_name_ar": "كيلو دجاج",
+  "active": true,
+  "chicken_g": 1000,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-075",
+  "pos_name_ar": "نص كيلو دجاج",
+  "active": true,
+  "chicken_g": 500,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-076",
+  "pos_name_ar": "كيلو لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 1000,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-077",
+  "pos_name_ar": "نص كيلو لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 500,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-078",
+  "pos_name_ar": "وجبة ساندويش دجاج تورتيلا",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-079",
+  "pos_name_ar": "وجبة لحمة تورتيلا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-080",
+  "pos_name_ar": "وجبة دجاج تورتيلا دوبل",
+  "active": true,
+  "chicken_g": 280,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-081",
+  "pos_name_ar": "وجبة لحمة تورتيلا دوبل",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-082",
+  "pos_name_ar": "وجبة مكس دجاج ولحمة",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-083",
+  "pos_name_ar": "وجبة MIX",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-084",
+  "pos_name_ar": "سيزر",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-085",
+  "pos_name_ar": "عرض ديمو ناجتس",
+  "active": true,
+  "chicken_g": 780,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-086",
+  "pos_name_ar": "سلايدر 6 دجاج+18 قطعة تورتيلا",
+  "active": true,
+  "chicken_g": 570,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-087",
+  "pos_name_ar": "سلايدر دجاج 12 حبة",
+  "active": true,
+  "chicken_g": 360,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-088",
+  "pos_name_ar": "عرض 6+6",
+  "active": true,
+  "chicken_g": 180,
+  "beef_g": 180,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-089",
+  "pos_name_ar": "سلايدر لحمة 12 حبة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 360,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-090",
+  "pos_name_ar": "سلايدر 12 دجاج",
+  "active": true,
+  "chicken_g": 360,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-091",
+  "pos_name_ar": "سلايدر 12 لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 360,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-092",
+  "pos_name_ar": "مياه معدنية",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-093",
+  "pos_name_ar": "لبن عيران",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-094",
+  "pos_name_ar": "وجبة موظف دجاج",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-095",
+  "pos_name_ar": "سندويش بطاطا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-096",
+  "pos_name_ar": "سندويش بطاطا كلاسيكي",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-097",
+  "pos_name_ar": "راب ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 130,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-098",
+  "pos_name_ar": "وجبة دجاج مقطعه دوبل مع بارد",
+  "active": true,
+  "chicken_g": 280,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-099",
+  "pos_name_ar": "وجبة لحمه تورتيلا مقطعه دوبل مع بارد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-100",
+  "pos_name_ar": "وجبة لحمة تورتيلا مقطعه دوبل مع بارد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-101",
+  "pos_name_ar": "مع ساندويش لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 100,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-102",
+  "pos_name_ar": "مع ساندويش دجاج",
+  "active": true,
+  "chicken_g": 100,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-103",
+  "pos_name_ar": "سلايدر 6 دجاج+6 لحمه",
+  "active": true,
+  "chicken_g": 180,
+  "beef_g": 180,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-104",
+  "pos_name_ar": "كبير 6 دجاج+18 قطعة تورتيلا",
+  "active": true,
+  "chicken_g": 570,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-105",
+  "pos_name_ar": "وجبة دجاج مقطع مع دوبل بارد",
+  "active": true,
+  "chicken_g": 280,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-106",
+  "pos_name_ar": "وجبة لحمة تورتيلا مقطع مع دوبل بارد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-107",
+  "pos_name_ar": "علبة حر كبيرة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-108",
+  "pos_name_ar": "وجبة لحمه تورتيلا مقطع دوبل مع بارد",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 280,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-109",
+  "pos_name_ar": "وجبة لحمه تورتيلا مقطع",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 140,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-110",
+  "pos_name_ar": "دايت بيبسي",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-111",
+  "pos_name_ar": "وجبة دجاج مقطع مع بارد",
+  "active": true,
+  "chicken_g": 280,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-112",
+  "pos_name_ar": "طراطور كبير",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-113",
+  "pos_name_ar": "سلايدر G دجاج +18 قطعة تورتيلا",
+  "active": true,
+  "chicken_g": 570,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-114",
+  "pos_name_ar": "وجبة دجاج",
+  "active": true,
+  "chicken_g": 140,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-115",
+  "pos_name_ar": "ميرندا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-116",
+  "pos_name_ar": "ميRANDA",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-117",
+  "pos_name_ar": "ميراندة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-118",
+  "pos_name_ar": "ميزاندا",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-119",
+  "pos_name_ar": "عرض 12 دجاج",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-120",
+  "pos_name_ar": "عرض 12 لحمة",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-121",
+  "pos_name_ar": "عرض 4$",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ },
+ {
+  "id": "pos-122",
+  "pos_name_ar": "سجق دونر",
+  "active": true,
+  "chicken_g": 0,
+  "beef_g": 0,
+  "sausage_g": 0
+ }
+]

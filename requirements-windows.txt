@@ -1,0 +1,3 @@
+# Windows-only: COM automation of Word / Excel / PowerPoint and of the Adobe apps (Photoshop, Illustrator, InDesign, After Effects).
+# The Adobe apps themselves are not included and need their own licenses.
+pywin32==312

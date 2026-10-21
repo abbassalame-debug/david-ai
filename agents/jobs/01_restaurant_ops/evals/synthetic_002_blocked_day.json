@@ -1,0 +1,68 @@
+{
+ "name": "blocked day",
+ "synthetic": true,
+ "package": {
+  "schema": "draft_package/v0",
+  "draft_id": "DRAFT-2026-09-21-001",
+  "business_day": "2026-09-21",
+  "day_status": "open",
+  "rate_lbp_per_usd": 89000,
+  "branch_settings": {
+   "rate_lbp_per_usd": 90000,
+   "cook_yield": 0.55
+  },
+  "sources": [
+   {
+    "file": "summary_by_items.jpg",
+    "kind": "summary_by_items"
+   }
+  ],
+  "extraction": {
+   "summary_by_items": {
+    "printed_total": 1620.0,
+    "lines": []
+   }
+  },
+  "cash": {
+   "old_cash": 950.0,
+   "pos_sales": 1620.0,
+   "wallet": 140.0,
+   "expenses": [
+    {
+     "label": "Vegetables",
+     "amount": 120.25
+    },
+    {
+     "label": "",
+     "amount": 92.0
+    }
+   ],
+   "transfer_to_admin": 700.0,
+   "counted_usd": 1410.0,
+   "counted_lbp": 9000000
+  },
+  "computed": {
+   "expected": 1517.75,
+   "counted": 1511.12,
+   "diff": -6.63,
+   "sum_of_lines": 1598.0,
+   "printed_total": 1620.0,
+   "line_gap": -22.0
+  },
+  "flags": [
+   "rate differs from branch setting"
+  ],
+  "tolerances": null
+ },
+ "must_flag": [
+  "line_gap",
+  "rate",
+  "unlabeled expense"
+ ],
+ "must_not_say": [
+  "approved",
+  "booked",
+  "inserted"
+ ],
+ "expected_status": "blocked"
+}

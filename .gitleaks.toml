@@ -1,0 +1,14 @@
+# gitleaks configuration: the default rules, plus an allowlist for the made-up key shapes the tests use on purpose
+# (redaction and DLP tests must contain something that LOOKS like a secret). Only these exact values are allowed;
+# a real key anywhere, including in these test files, is still reported.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "made-up secret shapes in the redaction and DLP tests"
+regexes = [
+  '''Hunter2-ZEBRA-ARG''',
+  '''sk-ZEBRAresult0123456789abcdef''',
+  '''AKIAZEBRA0123456789A''',
+  '''sk-abc123def456''',
+]

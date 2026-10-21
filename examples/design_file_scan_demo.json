@@ -1,0 +1,192 @@
+{
+ "files": 415,
+ "errors": 0,
+ "by_year": {
+  ".ai 2005": 74,
+  ".ai 2007": 64,
+  ".ai 2008": 43,
+  ".ai 2010": 4,
+  ".ai 2011": 1,
+  ".ai 2022": 4,
+  ".ai 2023": 1,
+  ".ai 2024": 21,
+  ".ai 2025": 73,
+  ".ai 2026": 13,
+  ".idml 2025": 3,
+  ".indd 2025": 3,
+  ".indd 2026": 1,
+  ".prproj 2025": 9,
+  ".psd 2007": 55,
+  ".psd 2008": 10,
+  ".psd 2022": 1,
+  ".psd 2024": 1,
+  ".psd 2025": 34,
+  ".psd 2026": 3
+ },
+ "psd_modes": {
+  "RGB": 36,
+  "CMYK": 3
+ },
+ "psd_depth": {
+  "8": 38
+ },
+ "psd_top_sizes": [
+  "3508x2480: 14",
+  "3556x2000: 5",
+  "900x1600: 3",
+  "1080x1080: 3",
+  "2480x3508: 3",
+  "990x853: 3",
+  "1200x1553: 1",
+  "2953x2079: 1",
+  "6123x4082: 1",
+  "1680x1050: 1",
+  "1200x628: 1",
+  "1080x1350: 1"
+ ],
+ ".psd has_xmp": [
+  "yes: 38"
+ ],
+ ".ai has_xmp": [
+  "yes: 113"
+ ],
+ ".ai swatch mode": [
+  "CMYK: 66",
+  "RGB: 30"
+ ],
+ ".ai swatch": [
+  "Black: 90",
+  "White: 90",
+  "C=0 M=75 Y=100 K=0: 67",
+  "C=90 M=30 Y=95 K=30: 67",
+  "C=0 M=0 Y=0 K=30: 67",
+  "C=0 M=0 Y=0 K=100: 67",
+  "C=0 M=80 Y=95 K=0: 66",
+  "C=100 M=100 Y=25 K=25: 66",
+  "C=75 M=100 Y=0 K=0: 66",
+  "C=0 M=35 Y=85 K=0: 66",
+  "C=0 M=0 Y=0 K=20: 66",
+  "C=0 M=0 Y=0 K=80: 66",
+  "C=0 M=0 Y=0 K=50: 66",
+  "C=0 M=100 Y=100 K=0: 66",
+  "CMYK Yellow: 66",
+  "C=85 M=50 Y=0 K=0: 66",
+  "C=0 M=50 Y=100 K=0: 66",
+  "CMYK Cyan: 66",
+  "C=100 M=90 Y=0 K=0: 66",
+  "C=50 M=50 Y=60 K=25: 66",
+  "C=30 M=50 Y=75 K=10: 66",
+  "C=80 M=10 Y=45 K=0: 66",
+  "C=10 M=100 Y=50 K=0: 66",
+  "C=0 M=90 Y=85 K=0: 66",
+  "C=70 M=15 Y=0 K=0: 66"
+ ],
+ ".ai font": [
+  "MyriadPro-Regular: 18",
+  "Athiya: 18",
+  "BritannicBold: 18",
+  "PerfectoCalligraphyPersonaluse: 14",
+  "AdobeArabic-Regular: 13",
+  "SakkalMajalla-Bold: 10",
+  "AAAGoldenLotusStg1_Ver1: 8",
+  "AbdoLine: 8",
+  "Montserrat-Bold: 7",
+  "SakkalMajalla: 5",
+  "AlexBrush-Regular: 4",
+  "AdobeArabic-Bold: 3",
+  "MyriadPro-Bold: 3",
+  "YuGothicUI-Semibold: 3",
+  "FranklinGothic-Demi: 3",
+  "ArialMT: 3",
+  "ArialNarrow-Bold: 3",
+  "Gulzar-Regular: 3",
+  "almwaheb-by-A4D: 3",
+  "DecoTypeNaskhVariants: 3",
+  "DecoTypeThuluthII: 3",
+  "Arial-BoldMT: 3",
+  "OAAAAA+ae_Cortoba: 1",
+  "AdobeArabic-BoldItalic: 1",
+  "TrebuchetMS-Bold: 1"
+ ],
+ ".ai family": [
+  "Myriad Pro: 19",
+  "Britannic Bold: 18",
+  "Athiya: 18",
+  "Adobe Arabic: 15",
+  "Perfecto Calligraphy - Personal use: 14",
+  "Sakkal Majalla: 10",
+  "AAAGoldenLotus Stg1_Ver1: 8",
+  "AbdoLine: 8",
+  "Montserrat: 8",
+  "Alex Brush: 4",
+  "Arial: 3",
+  "Yu Gothic UI: 3",
+  "Franklin Gothic Demi: 3",
+  "Gulzar: 3",
+  "DecoType Thuluth II: 3",
+  "DecoType Naskh Variants: 3",
+  "almwaheb by A4D: 3",
+  "OAAAAA+ae: 1",
+  "Trebuchet MS: 1",
+  "Constantia: 1",
+  "A Jannat LT: 1",
+  "FAAAAA+AbdoLine: 1",
+  "FAAAAA+MyriadPro Regular: 1",
+  "Traditional Arabic: 1",
+  "AvantGarde CondMedium: 1"
+ ],
+ ".psd icc": [
+  "sRGB IEC61966-2.1: 21",
+  "Adobe RGB (1998): 7",
+  "U.S. Web Coated (SWOP) v2: 3"
+ ],
+ ".idml has_xmp": [
+  "no: 3"
+ ],
+ ".indd has_xmp": [
+  "yes: 3"
+ ],
+ ".indd font": [
+  "TimesNewRomanPSMT: 1",
+  "TimesNewRomanPS-ItalicMT: 1",
+  "TimesNewRomanPS-BoldItalicMT: 1",
+  "TimesNewRomanPS-BoldMT: 1",
+  "MinionPro-Regular: 1"
+ ],
+ ".indd family": [
+  "Minion Pro: 1",
+  "Times New Roman: 1"
+ ],
+ ".indd swatch mode": [
+  "RGB: 1",
+  "CMYK: 1"
+ ],
+ ".indd swatch": [
+  "R=217 G=187 B=190: 1",
+  "R=232 G=222 B=245: 1",
+  "R=31 G=107 B=77: 1",
+  "Paper: 1",
+  "R=59 G=66 B=82: 1",
+  "R=91 G=58 B=138: 1",
+  "R=227 G=231 B=235: 1",
+  "R=241 G=243 B=245: 1",
+  "R=217 G=230 B=245: 1",
+  "R=217 G=239 B=230: 1",
+  "R=139 G=30 B=43: 1",
+  "R=19 G=27 B=50: 1",
+  "R=34 G=34 B=34: 1",
+  "R=251 G=231 B=206: 1",
+  "R=138 G=90 B=23: 1",
+  "R=31 G=78 B=121: 1",
+  "R=248 G=214 B=218: 1",
+  "R=22 G=32 B=58: 1",
+  "R=255 G=255 B=255: 1",
+  "R=68 G=80 B=107: 1",
+  "R=191 G=191 B=191: 1",
+  "Registration: 1",
+  "R=0 G=0 B=0: 1",
+  "Black: 1",
+  "R=185 G=138 B=61: 1"
+ ],
+ "_comment": "SYNTHETIC demo scan: the shape of a metadata scan of a designer's folders (counts of file years, fonts, swatches, colour profiles). All numbers are made up."
+}

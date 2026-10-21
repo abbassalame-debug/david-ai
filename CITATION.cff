@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "David AI: a local-first multi-agent orchestration, retrieval and cross-application automation framework"
+type: software
+authors:
+  - family-names: Salame
+    given-names: Abbas
+version: 1.1.0
+date-released: 2026-10-21
+license: Apache-2.0
+repository-code: "https://github.com/abbassalame-debug/david-ai"
+keywords:
+  - retrieval-augmented generation
+  - multi-agent systems
+  - local LLM
+  - Ollama
+  - LanceDB
+  - automation

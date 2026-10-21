@@ -11,10 +11,12 @@ import { MusicPage } from "@/pages/music-page"
 import { StudioPage } from "@/pages/studio-page"
 import { RestaurantPage } from "@/pages/restaurant-page"
 import { DesignPage } from "@/pages/design-page"
+import { LoginPage } from "@/pages/login-page"
 
 function App() {
   return (
     <Routes>
+      <Route path="login" element={<LoginPage />} />
       <Route element={<AppShell />}>
         <Route index element={<CommandCenter />} />
         <Route path="music" element={<MusicPage />} />

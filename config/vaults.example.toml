@@ -76,6 +76,16 @@ patterns = [
 ]
 
 # --- knowledge privacy: facts from these sources are never extracted or shown ------------------------------------------------------------
+[retrieval]
+# BM25 keyword hits scoring below this are dropped as coincidental matches. BM25 scores grow with the size of the corpus:
+# on a small or new library a genuine exact match can score under 10, while on a ~58k-chunk library coincidental noise
+# reaches ~30 (measured on the author's corpus in Oct 2026: raising the floor from 15 to 30 cut off-topic questions that got
+# notes injected from 22/30 to 6/30, with no loss of recall). Measure on your own corpus before raising it; 0 keeps every hit.
+min_fts_score = 15
+# Vector hits farther than this cosine distance are dropped. Unset = the embedder's calibrated default (embedding.py:
+# 0.50 for Qwen3-Embedding, 0.45 for bge-m3).
+# max_distance = 0.50
+
 [privacy]
 # A source path containing any of these (case-sensitive substring) is a raw people table: its facts are hidden, never deleted.
 sensitive_path_markers = [

@@ -59,7 +59,8 @@ jobs:
         test_agent_spec.py,test_config_invariants.py,test_embedding.py,test_hybrid_guardrails.py,test_ingest.py,
         test_ingest_rules.py,test_knowledge_privacy.py,test_qwen35_wiring.py,test_remediation_p345.py,
         test_security_and_routing.py,test_server_security.py,test_tools_policy.py,test_firewall_policy.py,
-        test_namespace_isolation.py,test_transcripts.py,test_run_all_tests.py
+        test_namespace_isolation.py,test_transcripts.py,test_run_all_tests.py,test_hud_auth.py,
+        test_retrieval_calibration.py,test_private_terms_check.py
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

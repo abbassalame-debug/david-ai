@@ -191,12 +191,13 @@ check("the research vault is reachable only by the agents that list it",
       all(("RESCANARY" in te._query_knowledge(Q, a)) == ("research" in rag.permitted_vaults(a)) for a in AGENTS))
 
 # hybrid path: BM25 + RRF (+ cross-vault fallback) must hit the same final check
+_floor = rag.MIN_FTS_SCORE
 rag.MIN_FTS_SCORE = 0
 try:
     leaks = [a for a in AGENTS for v, c in DOCS.items() if c in te._query_knowledge(Q, a) and v not in rag.permitted_vaults(a)]
     check("with BM25 + RRF fusion enabled the boundary still holds", not leaks, str(leaks[:5]))
 finally:
-    rag.MIN_FTS_SCORE = 15
+    rag.MIN_FTS_SCORE = _floor
 # M-03: the configured cross-vault fallback also runs when BM25 finds nothing (it used to be skipped). lore_keeper reads
 # lore + music; config gives lore a business fallback, so with only 2 own notes it reaches the business note. Research
 # has no fallback and is never reached that way.

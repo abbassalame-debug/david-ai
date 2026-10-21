@@ -21,7 +21,7 @@ heavy jobs and back); hallucinated tool calls and unsafe automation (per-agent a
 approval gates, run-on-copy with undo); and retrieval that returns noise (an embedder-calibrated distance ceiling, a BM25 floor, fail-closed vault namespaces).
 
 > **Status, honestly.** David was built for one operator on one Windows machine. It is a working system with a large offline test suite, not a polished product:
-> single-user, no authentication, Windows-bound for the Adobe/Office bridges, and every agent persona is a generic example you are expected to rewrite. See
+> single-user (one password login), Windows-bound for the Adobe/Office bridges, and every agent persona is a generic example you are expected to rewrite. See
 > [Limits](#limits).
 
 ## What is in the box
@@ -37,7 +37,8 @@ approval gates, run-on-copy with undo); and retrieval that returns noise (an emb
 ## Quickstart (no GPU, no cloud)
 
 ```bash
-git clone <this repository> && cd david-open
+git clone https://github.com/abbassalame-debug/david-ai
+cd david-ai
 python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
@@ -50,9 +51,15 @@ export DAVID_DATA=/tmp/david-demo DAVID_VAULTS=examples/demo_vault        # Powe
 python turbo_ingest.py --vaults-only
 python -c "import rag; print(rag.retrieve('analyst', 'Which supplier delivers beef trimmings?', top_k=2))"
 
-# the HUD (the API starts even without a frontend build; `cd ui/frontend && npm install && npm run build` adds the pages)
+# the HUD needs a login password first (stored only as an Argon2id hash under DAVID_DATA/auth/)
+python scripts/set_hud_password.py
+# (or, for a quick local try without a login: DAVID_AUTH=off, which the server accepts only on 127.0.0.1)
+# the API starts even without a frontend build; `cd ui/frontend && npm install && npm run build` adds the pages
 python -m uvicorn --app-dir ui server:app --host 127.0.0.1 --port 8000
 ```
+
+Then open `http://127.0.0.1:8000/login`. Without a password and without `DAVID_AUTH=off` the server refuses to start rather than run
+unprotected. Programs that call the HUD (scripts, scheduled jobs) use scoped bearer tokens: `python scripts/hud_tokens.py create <name> "GET /api/..."`.
 
 Configuration is environment variables (see `.env.example`) and one TOML file for the data-boundary policy (`config/vaults.example.toml`: the vault list, which
 agent may read which vault, the DLP patterns, the knowledge-privacy markers). `david_config.py` is the only module that knows where things live; no other file
@@ -82,11 +89,12 @@ a run on another platform or without the extras has not been tried. The Adobe su
 
 ## Limits
 
-- **Single user, no authentication.** The server is meant for `127.0.0.1` (see `SECURITY.md`). Do not expose it.
+- **Single user.** One password, one operator; there are no user accounts or roles. The server is meant for `127.0.0.1` (see `SECURITY.md`). Do not expose it to a network.
 - **Windows-bound in places.** The Adobe, Office and Premiere bridges use COM / CEP. The core engine is portable in principle, but the repository is only tested on Windows.
 - **The DLP filter is regex.** It catches labelled secrets, card numbers and listed keywords; it does not understand meaning.
 - **Fine-tuned adapters are not included.** Every default points at `qwen3.5:9b`. The router can run a second, fine-tuned model for the `general` domain (`DAVID_GENERAL_MODEL`) and a different failover model (`DAVID_FAILOVER_MODEL`); the training code and adapters are not part of this repository.
-- **Calibration is local.** The retrieval thresholds (`max_distance` 0.50, BM25 floor 15) were measured on one corpus; re-measure them for yours.
+- **Calibration is local.** The retrieval thresholds (`max_distance` 0.50, BM25 floor 15) were measured on one corpus. They are settings (`[retrieval]` in
+  `config/vaults.toml`); re-measure them for yours. BM25 scores grow with the corpus, so a large corpus needs a higher floor.
 - **Personas are examples.** The 17 role files are generic; the quality of the agents depends on how well you describe your own work in them.
 - **Video and music generation are experimental** and use the whole GPU while they run.
 

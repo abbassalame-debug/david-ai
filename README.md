@@ -83,7 +83,7 @@ pip install -r requirements-dev.txt
 python scripts/run_all_tests.py
 ```
 
-**Last run (Windows 11, Python 3.11, Ollama running): 50 suites, 2,377 checks, 0 failed (3 min 28 s).** The suites are plain Python scripts that use scripted
+**Last run (v1.1.0, 21 Oct 2026; Windows 11, Python 3.11, Ollama running, `DAVID_CI=1`): 61 suites, 2,785 checks, 1 skipped, 0 failed (4 min 20 s).** The suites are plain Python scripts that use scripted
 fakes for models, COM servers and databases, so they need neither a GPU nor a cloud account. They were run on Windows with the optional extras above installed;
 a run on another platform or without the extras has not been tried. The Adobe suites test the operations against recording stand-ins, not the real applications.
 

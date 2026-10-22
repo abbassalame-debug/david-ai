@@ -11,6 +11,11 @@ updates:
         versions: [">=2.0"]
       - dependency-name: "pyarrow"
         versions: [">=25.0"]
+      # These releases require Python 3.12+; the project targets Python 3.11 (PRs #18 and #22 could not install).
+      - dependency-name: "av"
+        versions: [">=19.0"]
+      - dependency-name: "scipy"
+        versions: [">=1.18"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:

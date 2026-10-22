@@ -408,12 +408,20 @@ def aerender_frame(aep, comp, out_dir, timeout=300):
     return None, "aerender rendered nothing: " + "; ".join(tried)
 
 
+PREMIERE_DEBUG_PORTS = (PREMIERE_DEBUG_PORT, 8089)     # 8088: the signed machine-wide panel "David AI"; 8089: the per-user panel "David AI v2"
+
+
 def _premiere_panel_pages():
-    try:
-        with urllib.request.urlopen(f"http://127.0.0.1:{PREMIERE_DEBUG_PORT}/json", timeout=3) as r:
-            return json.loads(r.read().decode("utf-8", "replace"))
-    except Exception:
-        return None
+    """The pages of whichever David panel is open (each panel declares its own debug port in its .debug file)."""
+    for port in PREMIERE_DEBUG_PORTS:
+        try:
+            with urllib.request.urlopen(f"http://127.0.0.1:{port}/json", timeout=3) as r:
+                pages = json.loads(r.read().decode("utf-8", "replace"))
+            if pages:
+                return pages
+        except Exception:
+            continue
+    return None
 
 
 def _queue_info_command():

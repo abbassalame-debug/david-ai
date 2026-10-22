@@ -18,7 +18,7 @@ All notable changes to this project are listed here. Versions follow [Semantic V
   never collapsed. The header is now stripped and the content kept; images, video and audio rows are never merged.
 - Tests walk routes inside included routers (FastAPI 0.146 nests them), including WebSockets; Dependabot holds `numpy < 2`, `pyarrow < 25`,
   `av < 19`, `scipy < 1.18` (they need NumPy 2 or Python 3.12), and groups action updates into one weekly pull request.
-- Dependency updates merged: FastAPI 0.146, pillow 13, portalocker 4, reportlab 5, google-genai 2.31, psd-tools 1.25, google-api-python-client, google-auth,
+- Dependency updates merged: FastAPI 0.147, pillow 13, portalocker 4, reportlab 5, google-genai 2.31, psd-tools 1.25, google-api-python-client, google-auth,
   and the GitHub Actions (checkout 7, setup-python 6, setup-node 7, upload-artifact 7, gitleaks-action 3).
 - `premiere_cep/install.ps1` enables debug mode for CSXS 12 (what the panel manifest requires) and 11, not 11 and 10. **Note:** `PlayerDebugMode`
   switches off CEP signature checking for *every* unsigned extension of Premiere, Photoshop, After Effects etc. 2024 and later for that Windows user,

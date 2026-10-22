@@ -5,7 +5,17 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # The project pins numpy==1.26.4; NumPy 2 is a separate migration. pyarrow 25+ requires NumPy 2 (PR #12 failed on it).
+      - dependency-name: "numpy"
+        versions: [">=2.0"]
+      - dependency-name: "pyarrow"
+        versions: [">=25.0"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
+    groups:
+      # one pull request a week for all workflow actions instead of one per action
+      actions:
+        patterns: ["*"]

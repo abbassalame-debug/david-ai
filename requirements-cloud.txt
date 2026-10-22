@@ -6,4 +6,4 @@ ddgs==9.14.4                  # the search_web tool
 google-api-python-client==2.201.0     # Calendar / Gmail tools (google_client.py)
 google-auth==2.62.0
 google-auth-oauthlib==1.4.0
-google-auth-httplib2==0.4.0
+google-auth-httplib2==0.4.4

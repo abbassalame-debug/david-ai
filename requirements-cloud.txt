@@ -4,6 +4,6 @@ google-genai==2.31.0          # Tier 2 (Gemini)
 anthropic==0.115.1            # Tier 3 (Claude)
 ddgs==9.14.4                  # the search_web tool
 google-api-python-client==2.201.0     # Calendar / Gmail tools (google_client.py)
-google-auth==2.54.0
+google-auth==2.62.0
 google-auth-oauthlib==1.4.0
 google-auth-httplib2==0.4.0

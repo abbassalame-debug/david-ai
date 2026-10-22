@@ -447,18 +447,46 @@ MAX_RELEVANT_DISTANCE = float(_RETRIEVAL.get("max_distance", embedding.max_dista
 MIN_FTS_SCORE = float(_RETRIEVAL.get("min_fts_score", 15))
 
 
+def _split_stub(line):
+    """(header, content) for a line that starts with extractors.describe()'s header "File: <name> | <type> | <size> | modified
+    <date> | path <path>", else None. turbo_ingest's chunker joins words with spaces, so a document's first chunk is ONE line: the
+    header followed directly by the content. The header ends where the path ends, i.e. after the file name."""
+    if not line.startswith("File: ") or " | path " not in line:
+        return None
+    bar = line.find(" | ")
+    name = line[6:bar]
+    p = line.find(" | path ")
+    end = line.find(name, p + 8) if name else -1
+    if end < 0:
+        return None
+    end += len(name)
+    return line[:end], line[end:]
+
+
 def _text_key(text):
-    """The comparable form of a chunk's text: header lines dropped, whitespace and case normalised."""
-    body = "\n".join(l for l in str(text or "").splitlines() if not l.startswith(("File:", "Path:")))
-    return " ".join(body.split()).lower()
+    """The comparable form of a chunk's text: header lines and the describe() header dropped (the content after it is kept),
+    whitespace and case normalised. (Dropping every line that starts with "File:" used to throw away the content of every
+    document's first chunk, which is a single line; see _split_stub.)"""
+    out = []
+    for l in str(text or "").splitlines():
+        stub = _split_stub(l)
+        if stub:
+            out.append(stub[1])
+        elif not l.startswith(("File:", "Path:")):
+            out.append(l)
+    return " ".join(" ".join(out).split()).lower()
+
+
+_MEDIA_TYPES = {"image", "video", "audio"}
 
 
 def _distinct(rows):
     """Keeps the first (best-ranked) row of each text. A library often holds the same document in several folders; without
-    this, copies of one passage can fill every context slot. Rows without text are kept as they are."""
+    this, copies of one passage can fill every context slot. Rows without text are kept as they are, and so are images, video
+    and audio: their text is technical metadata, identical across many different files."""
     seen, out = set(), []
     for r in rows:
-        key = _text_key(r.get("text"))
+        key = "" if r.get("asset_type") in _MEDIA_TYPES else _text_key(r.get("text"))
         if key:
             if key in seen:
                 continue

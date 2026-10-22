@@ -13,7 +13,11 @@ All notable changes to this project are listed here. Versions follow [Semantic V
   never wrote its file) and reads the picture back.
 
 ### Fixed
-- `premiere_cep/install.ps1` enables debug mode for CSXS 12 (what the panel manifest requires) and 11, not 11 and 10.
+- `premiere_cep/install.ps1` enables debug mode for CSXS 12 (what the panel manifest requires) and 11, not 11 and 10. **Note:** `PlayerDebugMode`
+  switches off CEP signature checking for *every* unsigned extension of Premiere, Photoshop, After Effects etc. 2024 and later for that Windows user,
+  not only this panel. To undo it: set `HKCU\Software\Adobe\CSXS.12` and `CSXS.11` `PlayerDebugMode` to `0`, or sign the panel instead (`ZXPSignCmd`).
+- Hardening: the Adobe program path and process name are never pasted into a PowerShell command; `DAVID_ADOBE_<APP>_EXE` is accepted only when it is
+  an absolute path to an existing file named like that app's program; `ADOBE_ROOT` is honoured only with `DAVID_ADOBE_TEST=1`.
 
 ## [1.1.0] — 2026-10-21
 

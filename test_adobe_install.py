@@ -47,8 +47,9 @@ ae26 = standin("Adobe After Effects 2026", r"Support Files\AfterFX.exe")
 standin("Adobe Audition 2027", "Adobe Audition.exe")                           # another app's folder is ignored
 
 os.environ["ADOBE_ROOT"] = ROOT
+os.environ["DAVID_ADOBE_TEST"] = "1"          # ADOBE_ROOT is honoured only with this (test hook)
 for k in list(os.environ):
-    if k.startswith("DAVID_ADOBE_"):
+    if k.startswith("DAVID_ADOBE_") and k != "DAVID_ADOBE_TEST":
         del os.environ[k]
 import adobe_install as A
 
@@ -70,6 +71,13 @@ check("DAVID_ADOBE_<APP>_EXE pins a build by hand and wins", c["exe"] == ps26 an
 check("the choice says how it was made", A.choose("photoshop")["source"].startswith("newest stable install (Adobe Photoshop 2027)"))
 check("older stable installs are listed", A.choose("photoshop")["older_stable"] == ["Adobe Photoshop 2026"])
 check("a stand-in without a version resource reports version None (no crash)", A.choose("aftereffects")["version"] is None)
+for bad, why in ((os.path.join(ROOT, "nope", "Photoshop.exe"), "missing file"), (os.path.join(ROOT, "Adobe InDesign 2026", "InDesign.exe"), "another app's program"),
+                 ("Photoshop.exe", "relative path")):
+    with mock.patch.dict(os.environ, {"DAVID_ADOBE_PHOTOSHOP_EXE": bad}):
+        c = A.choose("photoshop")
+    check(f"an invalid pin is ignored, never used ({why})", c["exe"] == ps27 and c["source"].startswith("newest stable"), str(c["exe"]))
+with mock.patch.dict(os.environ, {"DAVID_ADOBE_TEST": "0"}):
+    check("ADOBE_ROOT without DAVID_ADOBE_TEST=1 is ignored (it cannot redirect the bridges)", A.root() == A.ADOBE_ROOT_DEFAULT)
 with mock.patch.dict(os.environ, {"ADOBE_ROOT": os.path.join(ROOT, "missing")}):
     check("a missing install root means nothing installed (no crash)", A.choose("photoshop")["exe"] is None)
 

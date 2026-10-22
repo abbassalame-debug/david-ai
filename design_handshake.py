@@ -260,7 +260,12 @@ def wait_until(fn, seconds, every=2.0):
 
 def exe_version(app):
     try:
-        out = subprocess.run(["powershell", "-NoProfile", "-Command", f"(Get-Item '{EXES[app]}').VersionInfo.ProductVersion"], capture_output=True, text=True, timeout=20).stdout.strip()
+        v = adobe_install.file_version(EXES[app])           # win32api: no shell
+        if v:
+            return v
+        # fallback: the path travels in an environment variable, never inside the command text (a quote in it cannot run code)
+        out = subprocess.run(["powershell", "-NoProfile", "-Command", "(Get-Item -LiteralPath $env:DAVID_EXE_PATH).VersionInfo.ProductVersion"],
+                             capture_output=True, text=True, timeout=20, env=dict(os.environ, DAVID_EXE_PATH=EXES[app])).stdout.strip()
         return out
     except Exception:
         return ""
@@ -287,7 +292,9 @@ def read_com_app(app, d, report):
     app_obj, cid = com_connect(app)
     report["com_id"] = cid
     report["connect_seconds"] = round(time.time() - t0, 1)
-    exe = subprocess.run(["powershell", "-NoProfile", "-Command", f"(Get-Process | Where-Object {{ $_.Path -and (Split-Path $_.Path -Leaf) -like '*{os.path.splitext(PROCS[app])[0]}*' }} | Select-Object -First 3 -ExpandProperty Path) -join '|'"], capture_output=True, text=True, timeout=30).stdout.strip()
+    # the process-name stem travels in an environment variable, never inside the command text
+    exe = subprocess.run(["powershell", "-NoProfile", "-Command", "(Get-Process | Where-Object { $_.Path -and (Split-Path $_.Path -Leaf) -like ('*' + $env:DAVID_PROC_STEM + '*') } | Select-Object -First 3 -ExpandProperty Path) -join '|'"],
+                         capture_output=True, text=True, timeout=30, env=dict(os.environ, DAVID_PROC_STEM=os.path.splitext(PROCS[app])[0])).stdout.strip()
     report["connected_exe"] = exe
     if EXES[app].lower() not in exe.lower().split("|"):
         raise RuntimeError(f"the connection opened a different program than the stable one ({exe}); nothing was run")

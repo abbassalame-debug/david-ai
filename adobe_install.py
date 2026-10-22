@@ -33,7 +33,11 @@ FOLDER_RE = re.compile(r"^(?P<name>.+?) (?P<year>20\d\d)(?P<beta> \(Beta\))?$")
 
 
 def root():
-    return os.environ.get("ADOBE_ROOT") or ADOBE_ROOT_DEFAULT
+    """The install root. ADOBE_ROOT is a TEST hook: it is honoured only together with DAVID_ADOBE_TEST=1, so a stray variable cannot
+    redirect all five bridges (security review, 22 Oct)."""
+    if os.environ.get("DAVID_ADOBE_TEST") == "1" and os.environ.get("ADOBE_ROOT"):
+        return os.environ["ADOBE_ROOT"]
+    return ADOBE_ROOT_DEFAULT
 
 
 def file_version(path):
@@ -73,9 +77,12 @@ def choose(app, base=None):
     found = installs(app, base)
     pin = os.environ.get(f"DAVID_ADOBE_{app.upper()}_EXE")
     betas = [d["folder"] for d in found if d["beta"]]
-    if pin:
+    spec = APPS[app]
+    if pin and os.path.isabs(pin) and os.path.isfile(pin) and os.path.basename(pin).lower() in (
+            os.path.basename(spec["exe"]).lower(), os.path.basename(spec["beta_exe"]).lower()):
         return {"app": app, "exe": pin, "year": None, "version": file_version(pin), "source": f"DAVID_ADOBE_{app.upper()}_EXE",
-                "betas_beside": betas, "exists": os.path.isfile(pin)}
+                "betas_beside": betas, "exists": True}
+    # an invalid pin (relative, missing, or not this app's program file) is ignored, never run
     stable = [d for d in found if not d["beta"] and d["exists"]]
     if not stable:
         return {"app": app, "exe": None, "year": None, "version": None, "source": "not installed", "betas_beside": betas, "exists": False}

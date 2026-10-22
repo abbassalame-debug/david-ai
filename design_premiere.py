@@ -18,7 +18,10 @@ import design_naming
 import design_runner as R
 
 QUEUE = str(DAVID_DATA / "premiere_queue.json")
-PRESET = r"C:\Program Files\Adobe\Adobe Premiere Pro 2026\MediaIO\systempresets\3F3F3F3F_4D6F6F56\H264 Match Source - High bitrate.epr"
+import adobe_install
+# the export preset ships inside the Premiere install that is used (discovered, adobe_install.py; 2026 is the fallback)
+_PREMIERE_EXE = adobe_install.exe_path("premiere", r"C:\Program Files\Adobe\Adobe Premiere Pro 2026\Adobe Premiere Pro.exe")
+PRESET = os.path.join(os.path.dirname(_PREMIERE_EXE), "MediaIO", "systempresets", "3F3F3F3F_4D6F6F56", "H264 Match Source - High bitrate.epr")
 VIDEO_EXT = (".mp4", ".mov", ".m4v", ".avi", ".mxf")
 STILL_EXT = (".png", ".jpg", ".jpeg", ".tif", ".tiff")
 PING_WAIT = 25

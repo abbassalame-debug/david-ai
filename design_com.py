@@ -17,6 +17,13 @@ APPS = {
     "indesign": {"label": "InDesign", "com": "{45112D7C-822C-400A-BA8C-D682F7FD0B8E}", "proc": "InDesign.exe", "method": "DoScript",
                  "exe": r"C:\Program Files\Adobe\Adobe InDesign 2026\InDesign.exe"},
 }
+# Discovered builds and COM ids replace the 2026 literals above when found (adobe_install.py, 2026-10-22); the literals are the fallback.
+import adobe_install  # noqa: E402
+for _app, _spec in APPS.items():
+    _spec["com"] = adobe_install.com_ids(_app, fallback=[_spec["com"]])[0]
+    if "exe" in _spec:
+        _spec["exe"] = adobe_install.exe_path(_app, _spec["exe"])
+        _spec["proc"] = os.path.basename(_spec["exe"])
 RETRY_SIGNS = ("-2147417848", "disconnected from its clients", "-2147023174", "-2147023170", "Server execution failed", "-2146959355")
 EXIT_WAIT = 90
 WORKER_TIMEOUT = 420

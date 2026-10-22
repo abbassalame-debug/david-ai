@@ -78,6 +78,12 @@ APP_CONFIG = {
         "label":      "Premiere Pro",
     },
 }
+# Discovered builds and COM ids replace the 2026 literals above when found (adobe_install.py, 2026-10-22); the literals are the fallback.
+import adobe_install  # noqa: E402
+for _app, _cfg in APP_CONFIG.items():
+    _cfg["exe"] = adobe_install.exe_path(_app, _cfg["exe"])
+    if _cfg["com_ids"]:
+        _cfg["com_ids"] = adobe_install.com_ids(_app, fallback=_cfg["com_ids"])
 
 # ── Per-app LLM prompts ───────────────────────────────────────────────────────
 

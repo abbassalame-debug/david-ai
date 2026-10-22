@@ -28,14 +28,21 @@ OUT_ROOT = str(DAVID_DATA / "generated" / "design_handshake")
 ARABIC = "\u0644\u0627 \u0627\u0644\u062a\u0635\u0645\u064a\u0645"  # "la at-tasmim": a short word first, then a long one
 ARABIC_FONT_PS = "SakkalMajalla"
 ARABIC_FONT_FAMILY = "Sakkal Majalla"
-EXES = {"photoshop": r"C:\Program Files\Adobe\Adobe Photoshop 2026\Photoshop.exe",
-        "illustrator": r"C:\Program Files\Adobe\Adobe Illustrator 2026\Support Files\Contents\Windows\Illustrator.exe",
-        "indesign": r"C:\Program Files\Adobe\Adobe InDesign 2026\InDesign.exe",
-        "aftereffects": r"C:\Program Files\Adobe\Adobe After Effects 2026\Support Files\AfterFX.exe",
-        "premiere": r"C:\Program Files\Adobe\Adobe Premiere Pro 2026\Adobe Premiere Pro.exe"}
-PROCS = {"photoshop": "Photoshop.exe", "illustrator": "Illustrator.exe", "indesign": "InDesign.exe", "aftereffects": "AfterFX.exe", "premiere": "Adobe Premiere Pro.exe"}
-# the stable InDesign 2026 has no ProgID (the 2026 and 2027 beta installs took them over), so it is pinned by its own CLSID; a ProgID would open a beta
-COM_IDS = {"photoshop": ["Photoshop.Application"], "illustrator": ["Illustrator.Application"], "indesign": ["{45112D7C-822C-400A-BA8C-D682F7FD0B8E}"]}
+# The program files and COM ids are discovered (adobe_install.py): the newest STABLE yearly build whose program file exists (betas are
+# never chosen), and the registered COM id that starts exactly that program file. The 2026 literals below are only the fallback.
+import adobe_install
+
+_FALLBACK_EXES = {"photoshop": r"C:\Program Files\Adobe\Adobe Photoshop 2026\Photoshop.exe",
+                  "illustrator": r"C:\Program Files\Adobe\Adobe Illustrator 2026\Support Files\Contents\Windows\Illustrator.exe",
+                  "indesign": r"C:\Program Files\Adobe\Adobe InDesign 2026\InDesign.exe",
+                  "aftereffects": r"C:\Program Files\Adobe\Adobe After Effects 2026\Support Files\AfterFX.exe",
+                  "premiere": r"C:\Program Files\Adobe\Adobe Premiere Pro 2026\Adobe Premiere Pro.exe"}
+# the stable InDesign can have no ProgID of its own (a beta install may own them), so the fallback pins its CLSID
+_FALLBACK_COM_IDS = {"photoshop": ["Photoshop.Application"], "illustrator": ["Illustrator.Application"], "indesign": ["{45112D7C-822C-400A-BA8C-D682F7FD0B8E}"]}
+CHOSEN = {app: adobe_install.choose(app) for app in _FALLBACK_EXES}
+EXES = {app: CHOSEN[app].get("exe") or _FALLBACK_EXES[app] for app in _FALLBACK_EXES}
+PROCS = {app: os.path.basename(EXES[app]) for app in EXES}
+COM_IDS = {app: adobe_install.com_ids(app, fallback=ids) for app, ids in _FALLBACK_COM_IDS.items()}
 PREMIERE_QUEUE = str(DAVID_DATA / "premiere_queue.json")
 PREMIERE_DEBUG_PORT = 8088
 
@@ -180,7 +187,7 @@ W(OUT,R);
 """
 
 AE_JSX = PRELUDE + r"""
-var OUT=__OUT__,PNG=__PNG__,TEXT=__TEXT__,FONT=__FONT__;
+var OUT=__OUT__,PNG=__PNG__,AEP=__AEP__,TEXT=__TEXT__,FONT=__FONT__;
 R.app="aftereffects";
 step("info",function(){return {version:app.version,build:app.buildName,language:String(app.isoLanguage)};});
 step("comp_and_text",function(){
@@ -191,7 +198,8 @@ step("comp_and_text",function(){
  var bg=comp.layers.addSolid([1,1,1],"bg",1400,400,1);bg.moveToEnd();
  var back=prop.value.text;var png="not written";
  try{comp.saveFrameToPng(0,new File(PNG));png=PNG;}catch(e){png="saveFrameToPng failed: "+e;}
- var r={comp:comp.name,width:comp.width,height:comp.height,fps:comp.frameRate,duration:comp.duration,layers:comp.numLayers,read_back_equals_sent:(back===TEXT),font:fontSet,png:png};
+ var aep="not saved";try{proj.save(new File(AEP));aep=AEP;}catch(e){aep="save failed: "+e;}
+ var r={comp:comp.name,width:comp.width,height:comp.height,fps:comp.frameRate,duration:comp.duration,layers:comp.numLayers,read_back_equals_sent:(back===TEXT),font:fontSet,png:png,aep:aep};
  proj.close(CloseOptions.DO_NOT_SAVE_CHANGES);return r;});
 W(OUT,R);
 if(__QUIT__){app.quit();}
@@ -216,7 +224,7 @@ def build_jsx(app, d, quit_after=True):
     if app == "indesign":
         return ID_JSX.replace("__OUT__", _lit(f("id_result.json"))).replace("__PNG1__", _lit(f("id_arabic_default.png"))).replace("__PNG2__", _lit(f("id_arabic_rtl.png"))).replace("__TEXT__", _lit(ARABIC)).replace("__FAMILY__", _lit(ARABIC_FONT_FAMILY))
     if app == "aftereffects":
-        return AE_JSX.replace("__OUT__", _lit(f("ae_result.json"))).replace("__PNG__", _lit(f("ae_arabic.png"))).replace("__TEXT__", _lit(ARABIC)).replace("__FONT__", _lit(ARABIC_FONT_PS)).replace("__QUIT__", "true" if quit_after else "false")
+        return AE_JSX.replace("__OUT__", _lit(f("ae_result.json"))).replace("__PNG__", _lit(f("ae_arabic.png"))).replace("__AEP__", _lit(f("ae_scratch.aep"))).replace("__TEXT__", _lit(ARABIC)).replace("__FONT__", _lit(ARABIC_FONT_PS)).replace("__QUIT__", "true" if quit_after else "false")
     raise ValueError(app)
 
 
@@ -252,7 +260,12 @@ def wait_until(fn, seconds, every=2.0):
 
 def exe_version(app):
     try:
-        out = subprocess.run(["powershell", "-NoProfile", "-Command", f"(Get-Item '{EXES[app]}').VersionInfo.ProductVersion"], capture_output=True, text=True, timeout=20).stdout.strip()
+        v = adobe_install.file_version(EXES[app])           # win32api: no shell
+        if v:
+            return v
+        # fallback: the path travels in an environment variable, never inside the command text (a quote in it cannot run code)
+        out = subprocess.run(["powershell", "-NoProfile", "-Command", "(Get-Item -LiteralPath $env:DAVID_EXE_PATH).VersionInfo.ProductVersion"],
+                             capture_output=True, text=True, timeout=20, env=dict(os.environ, DAVID_EXE_PATH=EXES[app])).stdout.strip()
         return out
     except Exception:
         return ""
@@ -279,7 +292,9 @@ def read_com_app(app, d, report):
     app_obj, cid = com_connect(app)
     report["com_id"] = cid
     report["connect_seconds"] = round(time.time() - t0, 1)
-    exe = subprocess.run(["powershell", "-NoProfile", "-Command", f"(Get-Process | Where-Object {{ $_.Path -and (Split-Path $_.Path -Leaf) -like '*{os.path.splitext(PROCS[app])[0]}*' }} | Select-Object -First 3 -ExpandProperty Path) -join '|'"], capture_output=True, text=True, timeout=30).stdout.strip()
+    # the process-name stem travels in an environment variable, never inside the command text
+    exe = subprocess.run(["powershell", "-NoProfile", "-Command", "(Get-Process | Where-Object { $_.Path -and (Split-Path $_.Path -Leaf) -like ('*' + $env:DAVID_PROC_STEM + '*') } | Select-Object -First 3 -ExpandProperty Path) -join '|'"],
+                         capture_output=True, text=True, timeout=30, env=dict(os.environ, DAVID_PROC_STEM=os.path.splitext(PROCS[app])[0])).stdout.strip()
     report["connected_exe"] = exe
     if EXES[app].lower() not in exe.lower().split("|"):
         raise RuntimeError(f"the connection opened a different program than the stable one ({exe}); nothing was run")
@@ -359,15 +374,54 @@ def run_aftereffects(d, report, keep_open):
         report["closed_by_us"] = bool(wait_until(lambda: not running("aftereffects"), 60))
     else:
         report["closed_by_us"] = False
+    # comp.saveFrameToPng() finishes in the background and the script quits right after, so its PNG is never written (10 and
+    # 22 Oct). The script also saves its scratch project; aerender then renders frame 0 of it, and that picture is read back.
+    aep = ((report["script_result"].get("steps") or {}).get("comp_and_text") or {}).get("aep", "")
+    if aep and os.path.isfile(aep.replace("/", os.sep)) and not any(v.get("ok") for v in report["arabic"].values()):
+        frame, how = aerender_frame(aep.replace("/", os.sep), "hs_comp", d)
+        report["aerender_frame"] = how
+        report["arabic"]["comp_and_text:aerender"] = analyze_arabic(frame) if frame else {"ok": False, "reason": how}
     return report
 
 
+AERENDER_TEMPLATES = ("PNG Sequence", "TIFF Sequence with Alpha", "Photoshop")   # names differ between versions: first one that renders wins
+
+
+def aerender_frame(aep, comp, out_dir, timeout=300):
+    """Renders frame 0 of `comp` in the scratch project `aep` with aerender. Returns (picture path, how) or (None, why)."""
+    import glob as _glob
+    exe = os.path.join(os.path.dirname(EXES["aftereffects"]), "aerender.exe")
+    tried = []
+    for tmpl in AERENDER_TEMPLATES:
+        stem = os.path.join(out_dir, "ae_frame_" + tmpl.split()[0].lower())
+        cmd = [exe, "-project", aep, "-comp", comp, "-s", "0", "-e", "0", "-RStemplate", "Best Settings", "-OMtemplate", tmpl, "-output", stem + "_[#####]"]
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, encoding="utf-8", errors="replace")
+        except Exception as e:
+            tried.append(f"{tmpl}: {type(e).__name__}")
+            continue
+        pics = sorted(_glob.glob(stem + "_*"))
+        if pics:
+            return pics[0], f"rendered with aerender, output module '{tmpl}'"
+        tail = [l for l in (r.stdout or r.stderr or "").splitlines() if "error" in l.lower()][-1:]
+        tried.append(f"{tmpl}: exit {r.returncode}" + (f" ({tail[0][:120]})" if tail else ""))
+    return None, "aerender rendered nothing: " + "; ".join(tried)
+
+
+PREMIERE_DEBUG_PORTS = (PREMIERE_DEBUG_PORT, 8089)     # 8088: the signed machine-wide panel "David AI"; 8089: the per-user panel "David AI v2"
+
+
 def _premiere_panel_pages():
-    try:
-        with urllib.request.urlopen(f"http://127.0.0.1:{PREMIERE_DEBUG_PORT}/json", timeout=3) as r:
-            return json.loads(r.read().decode("utf-8", "replace"))
-    except Exception:
-        return None
+    """The pages of whichever David panel is open (each panel declares its own debug port in its .debug file)."""
+    for port in PREMIERE_DEBUG_PORTS:
+        try:
+            with urllib.request.urlopen(f"http://127.0.0.1:{port}/json", timeout=3) as r:
+                pages = json.loads(r.read().decode("utf-8", "replace"))
+            if pages:
+                return pages
+        except Exception:
+            continue
+    return None
 
 
 def _queue_info_command():
@@ -456,7 +510,11 @@ def handshake(app, out_dir=None, sample_ai=None, keep_open=False):
     stamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     d = out_dir or os.path.join(OUT_ROOT, f"{stamp}_{app}")
     os.makedirs(d, exist_ok=True)
-    report = {"app": app, "at": datetime.datetime.now().isoformat(timespec="seconds"), "exe": EXES[app], "installed_version": exe_version(app), "folder": d, "originals_unchanged": True}
+    report = {"app": app, "at": datetime.datetime.now().isoformat(timespec="seconds"), "exe": EXES[app], "installed_version": exe_version(app), "folder": d, "originals_unchanged": True,
+              "build_used": {"exe": EXES[app], "year": CHOSEN[app].get("year"), "version": CHOSEN[app].get("version"),
+                             "how": CHOSEN[app].get("source") if CHOSEN[app].get("exe") else "fallback literal (discovery found nothing)",
+                             "betas_beside_not_used": CHOSEN[app].get("betas_beside", []), "com_id": (COM_IDS.get(app) or [None])[0]}}
+    print(f"  build used: {report['build_used']['how']} | version {report['build_used']['version']} | {EXES[app]}", flush=True)
     originals = {}
     try:
         if sample_ai and app == "illustrator":

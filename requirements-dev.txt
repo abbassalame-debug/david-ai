@@ -2,5 +2,5 @@
 -r requirements.txt
 -r requirements-media.txt
 -r requirements-restaurant.txt
-reportlab>=4.0
+reportlab>=5.0.1
 av>=12

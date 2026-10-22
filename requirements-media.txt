@@ -1,6 +1,6 @@
 # Images, PSD files, audio and speech-to-text, music tools. Apache-2.0 / MIT / BSD / ISC / HPND unless noted.
 Pillow==13.0.0
-psd-tools==1.17.2
+psd-tools==1.25.0
 faster-whisper==1.2.1
 librosa==0.11.0
 soundfile==0.14.0

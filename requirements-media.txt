@@ -4,7 +4,7 @@ psd-tools==1.17.2
 faster-whisper==1.2.1
 librosa==0.11.0
 soundfile==0.14.0
-scipy==1.17.1
+scipy==1.18.1
 opencv-python>=4.8          # design_handshake.py (reads a rendered PNG back)
 python-osc==1.10.2          # ableton_bridge.py / studio_mode.py (AbletonOSC)
 

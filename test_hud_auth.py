@@ -86,10 +86,20 @@ print("\n── 1. anonymous requests to every route ──")
 OPEN_OK = {"/healthz", "/api/auth/status", "/api/auth/login", "/api/auth/logout", "/favicon.svg", "/icons.svg"}
 def concrete(path):
     return re.sub(r"\{[^}]+\}", "x", path).replace("/x", "/somepage") if "{full_path" in path else re.sub(r"\{[^}]+\}", "x", path)
+def http_routes(routes):
+    """Every HTTP route, also inside included routers: FastAPI 0.146 keeps an included router as one nested entry
+    (effective_candidates()) instead of copying its routes into app.routes."""
+    for r in routes:
+        if hasattr(r, "effective_candidates"):
+            yield from http_routes(r.effective_candidates())
+        elif isinstance(r, Route) or (hasattr(r, "path") and getattr(r, "methods", None)):
+            yield r
+
+
 c = client()
 leaks, checked = [], 0
-for r in srv.app.routes:
-    if isinstance(r, Route):
+for r in http_routes(srv.app.routes):
+    if True:
         p = concrete(r.path)
         if r.path in OPEN_OK:
             continue

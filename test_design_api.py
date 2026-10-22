@@ -135,7 +135,10 @@ print("\n-- deleting a project --")
 check("a wrong confirmation is refused (409); the exact id deletes the project folder", c.request("DELETE", f"/api/design/projects/{pid}", json={"confirm": "nope"}).status_code == 409 and os.path.isdir(os.path.join(ROOT, pid)) and c.request("DELETE", f"/api/design/projects/{pid}", json={"confirm": pid}).status_code == 200 and not os.path.exists(os.path.join(ROOT, pid)) and os.path.isfile(PNG))
 
 print("\n-- how the page reaches Adobe apps --")
-routes = [(m, r.path) for r in app.routes for m in (getattr(r, "methods", None) or [])]
+def _flat(routes):
+    for r in routes:   # FastAPI 0.146 nests an included router as one entry (effective_candidates())
+        yield from (_flat(r.effective_candidates()) if hasattr(r, "effective_candidates") else [r])
+routes = [(m, r.path) for r in _flat(app.routes) for m in (getattr(r, "methods", None) or [])]
 check("there is exactly one route that gives the yes for a job and exactly one for a pipeline (nothing else can approve), and exactly one run route for each",
       sorted(p for m, p in routes if p.endswith("/approve")) == ["/api/design/projects/{pid}/jobs/{jid}/approve", "/api/design/projects/{pid}/pipelines/{plid}/approve"]
       and sorted(p for m, p in routes if p.endswith("/run")) == ["/api/design/projects/{pid}/jobs/{jid}/run", "/api/design/projects/{pid}/pipelines/{plid}/run"])

@@ -2,7 +2,7 @@
 
 All notable changes to this project are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.1.1] — 2026-10-22
 
 ### Added
 - **Adobe version discovery** (`adobe_install.py`). The Photoshop, Illustrator, InDesign, After Effects and Premiere bridges no longer
@@ -13,6 +13,13 @@ All notable changes to this project are listed here. Versions follow [Semantic V
   never wrote its file) and reads the picture back.
 
 ### Fixed
+- `retrieve()` kept comparing only part of a document's first chunk: `turbo_ingest` stores a first chunk as one line (the describe() header
+  followed by the content) and the duplicate key dropped every line starting with `File:`, so first chunks looked empty and their copies were
+  never collapsed. The header is now stripped and the content kept; images, video and audio rows are never merged.
+- Tests walk routes inside included routers (FastAPI 0.146 nests them), including WebSockets; Dependabot holds `numpy < 2`, `pyarrow < 25`,
+  `av < 19`, `scipy < 1.18` (they need NumPy 2 or Python 3.12), and groups action updates into one weekly pull request.
+- Dependency updates merged: FastAPI 0.147, pillow 13, portalocker 4, reportlab 5, google-genai 2.31, psd-tools 1.25, google-api-python-client, google-auth,
+  and the GitHub Actions (checkout 7, setup-python 6, setup-node 7, upload-artifact 7, gitleaks-action 3).
 - `premiere_cep/install.ps1` enables debug mode for CSXS 12 (what the panel manifest requires) and 11, not 11 and 10. **Note:** `PlayerDebugMode`
   switches off CEP signature checking for *every* unsigned extension of Premiere, Photoshop, After Effects etc. 2024 and later for that Windows user,
   not only this panel. To undo it: set `HKCU\Software\Adobe\CSXS.12` and `CSXS.11` `PlayerDebugMode` to `0`, or sign the panel instead (`ZXPSignCmd`).
@@ -54,5 +61,6 @@ All notable changes to this project are listed here. Versions follow [Semantic V
 First public release (untagged): the core engine, the deterministic creative-app bridge, the restaurant-operations example vertical,
 the offline test suite and the documentation.
 
+[1.1.1]: https://github.com/abbassalame-debug/david-ai/releases/tag/v1.1.1
 [1.1.0]: https://github.com/abbassalame-debug/david-ai/releases/tag/v1.1.0
 [1.0.0]: https://github.com/abbassalame-debug/david-ai/commit/09f8866

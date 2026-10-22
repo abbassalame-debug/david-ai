@@ -104,5 +104,16 @@ vec = [row("r1", "research", "firewalled text", distance=0.05), row("s1", "syste
 got = retrieve(vec, agent="performance_coach")
 check("rows from a vault the agent may not see are still dropped", got == ["s1"], str(got))
 
+print("\n── C. a document's first chunk is one line: header + content ──")
+one_line = r"File: a b.xlsx | document | 30.0KB | modified 2025-04-17 | path D:\x y\a b.xlsx Sheet: S1 Totals 5"
+check("the content after the describe() header is kept in the key", rag._text_key(one_line) == "sheet: s1 totals 5", repr(rag._text_key(one_line)))
+check("a header with nothing after it is empty", rag._text_key(r"File: p.png | image | 1KB | modified 2025 | path C:\p.png") == "")
+same_body = [{"text": rf"File: c{i}.xlsx | document | 9KB | modified 2025 | path C:\f{i}\c{i}.xlsx Monthly totals 100 200"} for i in range(3)]
+check("copies of a first chunk (same body, other file) collapse to one", len(rag._distinct(same_body)) == 1)
+diff_body = [{"text": rf"File: m.xlsx | document | 9KB | modified 2025 | path C:\f{i}\m.xlsx Totals for month {i}"} for i in range(3)]
+check("same-named files with different content are all kept", len(rag._distinct(diff_body)) == 3)
+audio = [{"text": rf"File: kick{i}.wav | audio | 9KB | modified 2025 | path C:\s\kick{i}.wav 0.4s 44100 Hz stereo", "asset_type": "audio"} for i in range(4)]
+check("audio samples with identical metadata text are all kept", len(rag._distinct(audio)) == 4)
+
 print(f"\n{sum(results)}/{len(results)} checks passed")
 sys.exit(0 if all(results) else 1)

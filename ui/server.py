@@ -554,6 +554,10 @@ _APP_EXES = {
     "powerpoint":   r"C:\Program Files\Microsoft Office\root\Office16\POWERPNT.EXE",
     "ableton":      r"C:\ProgramData\Ableton\Live 12 Suite\Program\Ableton Live 12 Suite.exe",
 }
+# The five Adobe bridges use the discovered build (adobe_install.py, 2026-10-22); the 2026 literals above are the fallback.
+import adobe_install as _adobe_install
+for _a in ("photoshop", "illustrator", "indesign", "aftereffects", "premiere"):
+    _APP_EXES[_a] = _adobe_install.exe_path(_a, _APP_EXES[_a])
 
 def _resolve_app_key(raw: str) -> str:
     n = re.sub(r'\s+', '', raw.lower())

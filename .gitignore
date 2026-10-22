@@ -43,6 +43,7 @@ jobs_state/
 _reset_archive/
 /evals/
 /reports/
+/handoff/
 examples/templates/*.ai
 examples/templates/*.psd
 

@@ -21,8 +21,9 @@ $qjs = ($dataDir -replace "\\", "/") + "/premiere_queue.json"
 "var DAVID_QUEUE_PATH = '$qjs';" | Out-File -FilePath (Join-Path $dest "config.js") -Encoding ascii
 
 # Enable CEP debug mode (bypasses extension signing requirement)
-# Set for CSXS 11 (Premiere 2023-2026) and CSXS 10 (older) just in case
-foreach ($ver in @("11", "10")) {
+# CSXS 12 is what CSXS\manifest.xml requires (RequiredRuntime CSXS 12.0, Premiere 2024 and later, including 2026); 11 is kept for an
+# older Premiere. (This used to set only 11 and 10.) test_adobe_install.py checks the versions here include the manifest's runtime.
+foreach ($ver in @("12", "11")) {
     $key = "HKCU:\Software\Adobe\CSXS.$ver"
     if (-not (Test-Path $key)) { New-Item -Path $key -Force | Out-Null }
     Set-ItemProperty -Path $key -Name "PlayerDebugMode" -Value "1" -Type String

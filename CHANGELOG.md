@@ -2,6 +2,19 @@
 
 All notable changes to this project are listed here. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- **Adobe version discovery** (`adobe_install.py`). The Photoshop, Illustrator, InDesign, After Effects and Premiere bridges no longer
+  hard-code the 2026 folders: they use the newest *stable* yearly install whose program file exists (betas are listed, never chosen;
+  `DAVID_ADOBE_<APP>_EXE` pins one by hand) and the registered COM id that starts exactly that program file. The 2026 literals stay as the
+  fallback. `design_handshake.py` reports which build it used and how (`build_used`).
+- `design_handshake.py aftereffects` renders the Arabic test frame with `aerender` after After Effects has closed (the in-app frame export
+  never wrote its file) and reads the picture back.
+
+### Fixed
+- `premiere_cep/install.ps1` enables debug mode for CSXS 12 (what the panel manifest requires) and 11, not 11 and 10.
+
 ## [1.1.0] — 2026-10-21
 
 ### Added

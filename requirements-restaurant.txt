@@ -1,3 +1,3 @@
 # Restaurant vertical (restaurant_*.py, menu_tools.py): the guarded upload step talks to PostgreSQL.
 # psycopg is LGPL-3.0, used as an unmodified installed library.
-psycopg[binary]>=3.2
+psycopg[binary]>=3.3.6
